@@ -4,7 +4,7 @@ import { Subscription, timer } from 'rxjs';
 @Component({
   selector: 'app-task-timer-panel',
   templateUrl: './task-timer-panel.component.html',
-  styleUrls: ['./task-timer-panel.component.sass']
+  styleUrls: ['./task-timer-panel.component.scss']
 })
 export class TaskTimerPanelComponent implements OnInit {
   private sub: Subscription;
