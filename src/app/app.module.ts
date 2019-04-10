@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +14,8 @@ import { TaskItemComponent } from './task-list/task-item/task-item.component';
 import { TaskDescriptionPanelComponent } from './task-list/task-item/task-description-panel/task-description-panel.component';
 import { TaskTimerPanelComponent } from './task-list/task-item/task-timer-panel/task-timer-panel.component';
 import { TaskButtonPanelComponent } from './task-list/task-item/task-button-panel/task-button-panel.component';
+import { TaskInputComponent } from './task-input/task-input.component';
+import { TaskService } from './services/task.service';
 
 @NgModule({
   declarations: [
@@ -20,16 +24,20 @@ import { TaskButtonPanelComponent } from './task-list/task-item/task-button-pane
     TaskItemComponent,
     TaskDescriptionPanelComponent,
     TaskTimerPanelComponent,
-    TaskButtonPanelComponent
+    TaskButtonPanelComponent,
+    TaskInputComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MyOwnCustomMaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    TaskService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

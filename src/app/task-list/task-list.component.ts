@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../services/task.service';
+import { Task } from './task-item/task.module';
 
 @Component({
   selector: 'app-task-list',
@@ -8,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class TaskListComponent implements OnInit {
 
   panelOpenState = false;
+  taskList: Array<Task> = [];
 
-  constructor() { }
+  constructor(private taskService : TaskService) { 
+  }
 
   ngOnInit() {
+    this.taskService.taskListChanged.subscribe(
+      (taskData: Task[]) => {
+        this.taskList = taskData;
+      }
+    );
   }
 
 }

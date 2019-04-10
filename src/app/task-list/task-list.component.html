@@ -8,8 +8,6 @@
           2019/04/07
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <app-task-item></app-task-item>
-      <app-task-item></app-task-item>
-      <app-task-item></app-task-item>
+      <app-task-item  *ngFor="let item of taskList"> </app-task-item>
     </mat-expansion-panel>
   </mat-accordion>

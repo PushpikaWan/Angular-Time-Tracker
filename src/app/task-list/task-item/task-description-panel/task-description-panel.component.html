@@ -1,9 +1,17 @@
   
   <mat-form-field class="task-form-field">
-    <input matInput placeholder="Machonomy Code / Issue Id ">
+    <input 
+      matInput placeholder="Machonomy Code / Issue Id "
+      ngModel
+      name="codeInput"
+     >
     <mat-icon matSuffix>code</mat-icon>
   </mat-form-field>
   
   <mat-form-field class="task-form-field">
-      <input matInput placeholder="Description">
+      <input 
+        matInput placeholder="Description"
+        ngModel
+        name="descriptionInput"
+      >
   </mat-form-field>

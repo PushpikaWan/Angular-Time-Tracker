@@ -14,7 +14,7 @@ export class TaskTimerPanelComponent implements OnInit {
   constructor() { }
   
   ngOnInit() {
-    this.oberserableTimer();
+   // this.oberserableTimer();
   }
   
   oberserableTimer() {
