@@ -1,11 +1,11 @@
 <div fxLayout='row' class="zero">
   <div  fxFlex="55" class="item">
-    <app-task-description-panel></app-task-description-panel>
+    <app-task-description-panel [task]="currentTask"></app-task-description-panel>
   </div>
   <div fxFlex="15" class="item">
-    <app-task-timer-panel></app-task-timer-panel>
+    <app-task-timer-panel [task]="currentTask"></app-task-timer-panel>
   </div>
   <div fxFlex="30" class="item">
-    <app-task-button-panel></app-task-button-panel>
+    <app-task-button-panel [task]="currentTask"></app-task-button-panel>
   </div>
 </div>

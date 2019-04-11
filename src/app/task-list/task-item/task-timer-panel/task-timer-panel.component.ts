@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
+import { Task } from '../task.module';
 
 @Component({
   selector: 'app-task-timer-panel',
@@ -10,6 +11,8 @@ export class TaskTimerPanelComponent implements OnInit {
   private sub: Subscription;
   timerValue: string;
   timer: any;
+
+  @Input() task: Task;
   
   constructor() { }
   

@@ -24,8 +24,7 @@ export class TaskInputComponent implements OnInit {
     this.description = this.taskForm.value.description;
     console.log(this.code);
     console.log(this.description);
-    this.taskService.addTask({code:this.code,description:this.description});
-    this.taskService.taskListChanged.next(this.taskService.getTasks());
+    this.taskService.addTask({code: this.code, description: this.description});
     this.taskForm.reset();
   }
 

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Task } from '../task.module';
 
 @Component({
   selector: 'app-task-button-panel',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 ]
 })
 export class TaskButtonPanelComponent implements OnInit {
+
+  @Input() task: Task;
 
   constructor() { }
 
