@@ -39,6 +39,6 @@ export class TaskTimerPanelComponent implements OnInit {
   ngOnDestroy(){
     console.log("Destroy timer");
     // unsubscribe here
-    this.sub.unsubscribe();
+   // this.sub.unsubscribe();
   }
 }

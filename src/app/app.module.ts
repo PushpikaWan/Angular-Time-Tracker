@@ -36,7 +36,7 @@ import { TaskService } from './services/task.service';
     FormsModule
   ],
   providers: [
-    TaskService
+    TaskService,
   ],
   bootstrap: [AppComponent]
 })
