@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../task.module';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-task-button-panel',
@@ -11,9 +12,17 @@ export class TaskButtonPanelComponent implements OnInit {
 
   @Input() task: Task;
 
-  constructor() { }
+  constructor(private taskService : TaskService) {
+
+  }
 
   ngOnInit() {
+
+  }
+
+  onDelete(){
+    console.log("on delete");
+    this.taskService.deleteTask(this.task.id);
   }
 
 }

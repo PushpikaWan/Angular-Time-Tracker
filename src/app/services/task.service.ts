@@ -4,8 +4,6 @@ import { Injectable } from "@angular/core";
 import Dexie from 'dexie';
 import { UUID } from 'angular2-uuid';
 
-import { DataHandlingService } from "./dbServices/data-handling.service";
-
 @Injectable()
 export class TaskService{
 
@@ -14,6 +12,7 @@ export class TaskService{
 
     constructor(){
         this.createDatabase();
+        this.updateItemFromIndexDB();
     }
     // taskList: Array<Task> = [];
     taskListChanged = new Subject;
@@ -21,15 +20,17 @@ export class TaskService{
     addTask( task: Task){
         task.id = UUID.UUID();
         this.addToIndexedDb(task);
-        this.sendItemsFromIndexedDb();
+        this.updateItemFromIndexDB();
     }
 
     getTasks(): Task[]{
         return this.taskList;
     }
 
-
-    ////////////////////////////////////////////////////
+    deleteTask(taskId : String){
+        console.log("delete this",taskId);
+        this.deleteItemsFromIndexedDb(taskId);
+    }
 
     private createDatabase() {
         this.db = new Dexie('MyTestDatabase');
@@ -50,13 +51,24 @@ export class TaskService{
           });
       }
     
-       private async sendItemsFromIndexedDb() {
+       private async updateItemFromIndexDB() {
           const allItems: Task[] = await this.db.tasks.toArray();
           this.taskList =  allItems;
           console.log("updated senditems", allItems);
           this.taskListChanged.next(this.getTasks());
-
       }
-      
 
+      private async deleteItemsFromIndexedDb(id : String) {
+        
+        const allItems: Task[] = await this.db.tasks.toArray();
+        // console.log("Delete this id",id);
+        allItems.forEach((item: Task) => {
+            if(item.id == id){
+                this.db.tasks.delete(item.id).then(() => {
+                    console.log(`item ${item.id} sent and deleted locally`);
+                });
+            }
+        });
+        this.updateItemFromIndexDB();
+      }
 }
