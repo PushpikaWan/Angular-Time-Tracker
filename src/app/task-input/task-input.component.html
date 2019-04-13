@@ -18,7 +18,11 @@
     </div>
     <!-- strat /stop button-->
     <div class="task-input-item" class="task-input-item">
-      <button mat-raised-button color="primary" type="submit">Start</button>
+      <button (click)="onStartClick()" mat-raised-button  
+             [ngStyle]="isStarted ? {'background-color': 'red'} : {'background-color': 'blue'}" 
+              style="color:white" >
+              {{isStarted? 'End' : 'Start'}}
+    </button>
     </div>
     <!-- change time picker to timer button-->
     <div class="task-input-item">

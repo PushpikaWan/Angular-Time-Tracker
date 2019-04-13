@@ -17,6 +17,7 @@ import { AutoCompleteSelectorComponent } from './shared/components/auto-complete
 import { TaskInputComponent } from './task-input/task-input.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskItemComponent } from './task-list/task-item/task-item.component';
+import { TimerService } from './services/timer.service';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { TaskItemComponent } from './task-list/task-item/task-item.component';
   ],
   providers: [
     TaskService,
+    TimerService
   ],
   bootstrap: [AppComponent]
 })
