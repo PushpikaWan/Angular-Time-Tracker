@@ -1,0 +1,29 @@
+.task-input-parent{
+    display: grid;
+    grid-template-columns: 12fr 3fr 3fr 3fr 3fr 1fr; 
+    min-width: 500px;
+    max-height: 80px;
+    height: 100%;
+    // max-width: 200px;
+    width: 100%;
+    border-style: groove;
+}
+
+.task-input-item{
+    display: grid;
+    align-content: center;
+    justify-content: stretch;
+    max-height: 30px;
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+}
+
+.task-description-input{
+    display: grid;
+    align-content: center;
+    justify-content: stretch;
+    min-width: 300px;
+    height: 100%;
+    width: 100%;
+}

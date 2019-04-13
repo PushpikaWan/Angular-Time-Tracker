@@ -31,7 +31,7 @@ export class TimerComponent implements OnInit {
       // Time calculations for days, hours, minutes and seconds
     let hours = Math.floor(tick / 60 / 60);
     let minutes = Math.floor(tick / 60) % 60;
-    let seconds = Math.floor(tick - minutes * 60);
+    let seconds = Math.floor(tick - (hours*60*60 + minutes * 60));
 
     this.timerValue = ` ${hours} h : ${minutes} m : ${seconds} s`
 
