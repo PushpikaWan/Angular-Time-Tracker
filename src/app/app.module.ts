@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyOwnCustomMaterialModule } from './shared/material.module';
 
 
@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { TaskService } from './services/task.service';
 import { DatePickerComponent } from './shared/components/date-picker/date-picker.component';
 import { TimePickerComponent } from './shared/components/time-picker/time-picker.component';
+import { TimerComponent } from './shared/components/timer/timer.component';
+import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { TimePickerComponent } from './shared/components/time-picker/time-picker
     AppComponent,
     DatePickerComponent,
     TimePickerComponent,
+    TimerComponent,
+    AutoCompleteSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,7 @@ import { TimePickerComponent } from './shared/components/time-picker/time-picker
     MyOwnCustomMaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     TaskService,
