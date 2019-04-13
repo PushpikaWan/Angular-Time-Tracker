@@ -1,0 +1,18 @@
+.task-expansion-parent{
+    display: grid;
+    padding: 1em;
+    grid-template-columns: 75%;
+    justify-content: center;
+}
+
+.panel-header-content-parent{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    width: 100% ;
+}
+
+.panel-date{
+    display: grid;
+    align-content: end;
+    justify-content: end;
+}
