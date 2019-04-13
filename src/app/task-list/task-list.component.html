@@ -1,0 +1,28 @@
+<div class="task-expansion-parent">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <div class="panel-header-content-parent">
+          <div class="panle-task-name">
+            <mat-panel-title>
+              Task
+            </mat-panel-title>
+          </div>
+          <div class="panle-task-name">
+            <mat-panel-description>
+              2019/04/07
+            </mat-panel-description>
+          </div>
+          <div class="panle-task-name">
+            <mat-panel-description class="panel-date">
+              <div>
+                <B> Total :</B>10h : 20min
+              </div>
+            </mat-panel-description>
+          </div>
+        </div>
+      </mat-expansion-panel-header>
+      <!-- <app-task-item  *ngFor="let item of taskList" [currentTask] = "item"></app-task-item> -->
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

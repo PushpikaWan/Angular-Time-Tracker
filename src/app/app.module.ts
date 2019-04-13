@@ -15,6 +15,8 @@ import { TimePickerComponent } from './shared/components/time-picker/time-picker
 import { TimerComponent } from './shared/components/timer/timer.component';
 import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
 import { TaskInputComponent } from './task-input/task-input.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { TaskItemComponent } from './task-item/task-item.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { TaskInputComponent } from './task-input/task-input.component';
     TimePickerComponent,
     TimerComponent,
     AutoCompleteSelectorComponent,
-    TaskInputComponent
+    TaskInputComponent,
+    TaskListComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,
