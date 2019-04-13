@@ -1,5 +1,4 @@
-
-export class TimerDateTime{
+export class Timer{
 
     seconds?: number;
     mintues: number;

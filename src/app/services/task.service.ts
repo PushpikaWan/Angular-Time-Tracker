@@ -1,10 +1,9 @@
-import { Task } from "../task-list/task-item/task.module";
 import { Subject } from "rxjs";
-import { Injectable } from "@angular/core";
-import Dexie from 'dexie';
 import { UUID } from 'angular2-uuid';
+import Dexie from 'dexie';
 
-@Injectable()
+import { Task } from "../models/task.module";
+
 export class TaskService{
 
     private taskList: Task[] = [];
