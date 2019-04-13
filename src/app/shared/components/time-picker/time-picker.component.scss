@@ -1,0 +1,11 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: 70px 25px;
+    padding: 1em;
+}
+
+.timeInputPanel{
+    display: grid;
+    justify-content: center;
+    width: 100px;
+}
