@@ -1,0 +1,21 @@
+.task-input-parent{
+    display: grid;
+    grid-template-columns: 10fr 2fr 2fr 2fr 2fr 1fr 2fr 1fr 1fr; 
+    min-width: 500px;
+    max-height: 80px;
+    height: 100%;
+    width: 100%;
+    // border-style: groove;
+}
+
+.task-input-item{
+    display: grid;
+    align-content: center;
+    justify-content: stretch;
+}
+
+.task-description-input{
+    display: grid;
+    align-content: center;
+    justify-content: stretch;
+}

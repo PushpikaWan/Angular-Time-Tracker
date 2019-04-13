@@ -16,7 +16,7 @@ import { TimerComponent } from './shared/components/timer/timer.component';
 import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
 import { TaskInputComponent } from './task-input/task-input.component';
 import { TaskListComponent } from './task-list/task-list.component';
-import { TaskItemComponent } from './task-item/task-item.component';
+import { TaskItemComponent } from './task-list/task-item/task-item.component';
 
 
 @NgModule({
