@@ -1,3 +1,9 @@
+.parent{
+    display: grid;
+    grid-template-columns: 75%;
+    justify-content: center;
+}
+
 .task-input-parent{
     display: grid;
     grid-template-columns: 12fr 3fr 3fr 3fr 3fr 1fr; 
