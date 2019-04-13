@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
 import { Task } from 'src/app/models/task.module';
+import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
   selector: 'app-timer',
@@ -16,10 +17,21 @@ export class TimerComponent implements OnInit {
 
   @Input() task: Task;
   
-  constructor() { }
+  constructor(private timerService: TimerService) { 
+    timerService.timerSetActive.subscribe(
+      ( isStarted: Boolean) =>{
+        if(!isStarted){
+          this.oberserableTimer();
+        }
+        else{
+          this.sub.unsubscribe();
+        }
+      }
+    );
+  }
   
   ngOnInit() {
-   this.oberserableTimer();
+  //  this.oberserableTimer();
   }
   
   oberserableTimer() {
