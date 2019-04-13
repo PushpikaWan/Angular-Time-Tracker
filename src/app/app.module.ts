@@ -10,10 +10,15 @@ import { MyOwnCustomMaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { TaskService } from './services/task.service';
+import { DatePickerComponent } from './shared/components/date-picker/date-picker.component';
+import { TimePickerComponent } from './shared/components/time-picker/time-picker.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DatePickerComponent,
+    TimePickerComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +26,7 @@ import { TaskService } from './services/task.service';
     BrowserAnimationsModule,
     MyOwnCustomMaterialModule,
     FlexLayoutModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     TaskService,
