@@ -11,7 +11,7 @@ export class Task{
     timer: Timer;
     state?: String; 
     date? : Date;
-    startingTime? : Time;
-    endingTime? : Time;
+    startTime? : Time;
+    endTime? : Time;
     //replace with enum
 }

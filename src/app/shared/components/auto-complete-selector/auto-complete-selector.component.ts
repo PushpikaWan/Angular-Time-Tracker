@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormControl, ControlValueAccessor } from '@angular/forms';
+import { FormControl, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
+import { Task } from 'src/app/models/task.module';
 
 @Component({
   selector: 'app-auto-complete-selector',
@@ -9,9 +10,8 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./auto-complete-selector.component.scss']
 })
 export class AutoCompleteSelectorComponent implements OnInit,ControlValueAccessor {
-
-  
   @Input() placeHolderValue : String; 
+  @Input() task : Task; 
   
   myControl = new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
