@@ -1,9 +1,15 @@
-<div class="wrapper">
-  <div class="timeInputPanel">
-    <input class="timeInputPanel" [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly>
-  </div>
-  <div>
-    <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
-    <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
-  </div>
-</div>
+<form>
+    <div class="wrapper">
+        <div class="timeInputPanel">
+          <input class="timeInputPanel" 
+                [ngxTimepicker]="toggleTimepicker" 
+                [disableClick]="true" 
+                [formControl]="timePickerControl"
+                readonly>
+        </div>
+        <div>
+          <ngx-material-timepicker-toggle [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+          <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+        </div>
+      </div>
+</form>

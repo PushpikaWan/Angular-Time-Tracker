@@ -1,5 +1,6 @@
 import { Subject } from "rxjs";
 import { Timer } from "../models/timer.module";
+import { Time } from "../models/time.module";
 
 export class DateTimeService{
 
@@ -14,6 +15,10 @@ export class DateTimeService{
 
   convertTimerToString(timer: Timer): String{
     return ` ${timer.hours} h : ${timer.minutes} min : ${timer.seconds} s`;
+  }
+
+  convertTimeToString(time: Time): String{
+    return `${time.hours}:${time.minutes}:${time.seconds}`;
   }
 
   // convertStringToTimer: Timer{

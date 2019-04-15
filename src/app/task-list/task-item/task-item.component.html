@@ -10,8 +10,8 @@
       <div  class="task-input-item">
         <app-auto-complete-selector 
             [task]="currentTask" 
-            #projectField
-            name="projectField">
+            name="projectField"
+            #projectField>
         </app-auto-complete-selector>
       </div>
       <!-- tags-->
@@ -25,13 +25,17 @@
       <!-- start time-->
       <div class="task-input-item">
           <app-time-picker 
-            [task]="currentTask">
+            [task]="currentTask"
+            name="startTimeField"
+            #startTimeField>
           </app-time-picker>
       </div>
       <!-- end time-->
       <div class="task-input-item">
           <app-time-picker 
-             [task]="currentTask">
+             [task]="currentTask"  
+             name="endTimeField"
+             #endTimeField>
           </app-time-picker>
       </div>
       <!-- date picker -->
@@ -58,6 +62,6 @@
           <button mat-icon-button color="warn">
               <mat-icon aria-label="play / pause button">delete</mat-icon>
           </button>
-        </div>
+      </div>
     </div>
   </form>
