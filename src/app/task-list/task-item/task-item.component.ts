@@ -28,8 +28,8 @@ export class TaskItemComponent implements OnInit {
   descriptionField: String;
 
   constructor(private formBuilder: FormBuilder,
-              private taskService: TaskService,
-              private dateTimeService: DateTimeService) {
+    private taskService: TaskService,
+    private dateTimeService: DateTimeService) {
   }
 
   ngOnInit() {
@@ -59,51 +59,73 @@ export class TaskItemComponent implements OnInit {
 
   private registerListeners() {
     this.ItemForm.get('descriptionField').valueChanges.subscribe(
-      value => { 
+      value => {
         console.log("descritption changed", value);
         this.currentTask.description = value;
         this.taskService.addTask(this.currentTask);
-     }
+      }
     );
     this.projectField.myControl.valueChanges.subscribe(
-      value => { 
-        console.log("projectName changed", value); 
+      value => {
+        console.log("projectName changed", value);
         this.currentTask.project = value;
         this.taskService.addTask(this.currentTask);
-     }
+      }
     );
 
     this.tagField.myControl.valueChanges.subscribe(
-      value => { 
-        console.log("tag changed", value); 
+      value => {
+        console.log("tag changed", value);
         this.currentTask.tag = value;
         this.taskService.addTask(this.currentTask);
       }
     );
 
     this.startTimeField.timePickerControl.valueChanges.subscribe(
-      value => { 
+      value => {
         console.log("starting time changed", value);
-        this.refreshTimerValue();
-        this.currentTask.startTime = this.dateTimeService.convertStringToTime(value);
-        //changetimer value
+        if (this.dateTimeService.isBefore(this.currentTask.endTime, this.dateTimeService.convertStringToTime(value))) {
+          this.endTimeField.timePickerControl.setErrors({ 'incorrect': true });
+          console.log("start time before end");
+        }
+        else {
+          this.currentTask.startTime = this.dateTimeService.convertStringToTime(value);
+          //changetimer value
+          this.currentTask.timer = this.dateTimeService.getTimeDiff(
+            this.currentTask.startTime, this.currentTask.endTime
+          );
+        }
         this.taskService.addTask(this.currentTask);
-     }
+      }
     );
 
     this.endTimeField.timePickerControl.valueChanges.subscribe(
-      value => { 
-        console.log("end time changed", value); 
-        this.refreshTimerValue();
-        this.currentTask.endTime = this.dateTimeService.convertStringToTime(value);
-         //changetimer value
+      value => {
+        console.log("end time changed", value);
+        //todo need to add validations  and errors
+        if (this.dateTimeService.isBefore(this.dateTimeService.convertStringToTime(value), this.currentTask.startTime)) {
+          this.endTimeField.timePickerControl.setErrors({ 'incorrect': true });
+          console.log("end time before start");
+        }
+        else {
+          this.currentTask.endTime = this.dateTimeService.convertStringToTime(value);
+          //changetimer value
+          this.currentTask.timer = this.dateTimeService.getTimeDiff(
+            this.currentTask.startTime, this.currentTask.endTime
+          );
+        }
         this.taskService.addTask(this.currentTask);
       }
     );
 
     this.dateField.datePickerControl.valueChanges.subscribe(
-      value => { 
-        console.log("date changed", value); 
+      value => {
+        if (this.dateTimeService.isFuture(new Date(value), this.currentTask.endTime)) {
+          this.dateField.datePickerControl.setErrors({ 'incorrect': true });
+          console.log("validation error: date time cannot be future")
+          return;
+        }
+        console.log("date changed", value);
         this.currentTask.date = value;
         this.taskService.addTask(this.currentTask);
       }
@@ -111,15 +133,11 @@ export class TaskItemComponent implements OnInit {
 
   }
 
-  private refreshTimerValue() {
-
-  }
-
-  private onDeleteItem(){
-    if(window.confirm(`Are sure you want to delete this ${this.currentTask.description} item ?`)){
+  private onDeleteItem() {
+    if (window.confirm(`Are sure you want to delete this ${this.currentTask.description} item ?`)) {
       //put your delete method logic here
       this.taskService.deleteTask(this.currentTask.id);
-     }
+    }
   }
 
 }
