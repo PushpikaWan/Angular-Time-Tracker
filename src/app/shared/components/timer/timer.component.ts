@@ -4,6 +4,7 @@ import { Subscription, timer } from 'rxjs';
 import { Task } from 'src/app/models/task.module';
 import { DateTimeService } from 'src/app/services/date-time.service';
 import { Timer } from 'src/app/models/timer.module';
+import { Time } from 'src/app/models/time.module';
 
 @Component({
   selector: 'app-timer',
@@ -13,31 +14,59 @@ import { Timer } from 'src/app/models/timer.module';
 export class TimerComponent implements OnInit {
 
   private sub: Subscription;
-  timerValue: Timer =  {hours:0, mintues:0, seconds:0};
+  timerValue: Timer =  {hours:0, minutes:0, seconds:0};
   timerString: String;
+  startTime: Time;
+  endTime: Time;
   timer: any;
 
   @Input() task: Task;
+  isEditDisable: boolean =true;
   
   constructor(private dateTimeService: DateTimeService) { 
     this.timerString = dateTimeService.convertTimerToString(this.timerValue);
-    dateTimeService.timerStateChanged.subscribe(
+  }
+  
+  ngOnInit() {
+    //set value when value is there 
+    if(this.task != undefined){
+      this.timerValue = {
+        hours:this.task.timer.hours, 
+        minutes:this.task.timer.minutes, 
+        seconds:this.task.timer.seconds};
+      this.timerString = this.dateTimeService.convertTimerToString(this.timerValue); 
+      return;
+    }
+    //do current input task related operations here
+    this.isEditDisable = false;
+    this.dateTimeService.timerStateChanged.subscribe(
       ( isStarted: Boolean) =>{
         if(!isStarted){
           this.oberserableTimer();
+          let currentDate: Date = new Date();
+          this.startTime = {
+            hours:currentDate.getHours(), 
+            minutes: currentDate.getMinutes(),
+            seconds: currentDate.getSeconds()
+          }; 
         }
         else{
           this.sub.unsubscribe();
+          let currentDate: Date = new Date();
+          this.endTime = {
+            hours:currentDate.getHours(), 
+            minutes: currentDate.getMinutes(),
+            seconds: currentDate.getSeconds()
+          }; 
         }
       }
     );
   }
   
-  ngOnInit() {
-  //  this.oberserableTimer();
-  }
-  
   oberserableTimer() {
+    if(this.isEditDisable){
+      return;
+    }
     this.timer = timer(1000,1000);
     this.sub = this.timer.subscribe(t => this.tickerFunc(t));
   }
@@ -48,7 +77,7 @@ export class TimerComponent implements OnInit {
     let minutes = Math.floor(tick / 60) % 60;
     let seconds = Math.floor(tick - (hours*60*60 + minutes * 60));
 
-    this.timerValue = {hours:hours, mintues:minutes, seconds:seconds};
+    this.timerValue = {hours:hours, minutes:minutes, seconds:seconds};
     this.timerString = this.dateTimeService.convertTimerToString(this.timerValue);
   }
 

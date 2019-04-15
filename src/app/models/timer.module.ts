@@ -1,7 +1,7 @@
 export class Timer{
 
     seconds?: number;
-    mintues: number;
+    minutes: number;
     hours: number;
 
 }

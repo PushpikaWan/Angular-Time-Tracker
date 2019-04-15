@@ -13,7 +13,7 @@ export class DateTimeService{
   TimeStateChanged = new Subject;
 
   convertTimerToString(timer: Timer): String{
-    return ` ${timer.hours} h : ${timer.mintues} min : ${timer.seconds} s`;
+    return ` ${timer.hours} h : ${timer.minutes} min : ${timer.seconds} s`;
   }
 
   // convertStringToTimer: Timer{

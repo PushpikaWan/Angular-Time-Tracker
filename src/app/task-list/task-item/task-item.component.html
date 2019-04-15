@@ -1,47 +1,63 @@
-<div class="task-input-parent">
-    <!-- description -->
-    <div class="task-input-item">
-      <input class="task-description-input"/>
-    </div>
-    <!-- project-->
-    <div  class="task-input-item">
-      <app-auto-complete-selector></app-auto-complete-selector>
-    </div>
-    <!-- tags-->
-    <div class="task-input-item">
-      <app-auto-complete-selector></app-auto-complete-selector>
-    </div>
-    <!-- start time-->
-    <div class="task-input-item">
-        <app-time-picker></app-time-picker>
-    </div>
-     <!-- end time-->
-     <div class="task-input-item">
-        <app-time-picker></app-time-picker>
-    </div>
-    <!-- date picker -->
-    <!-- <div class="task-input-item" class="task-input-item">
-      <app-date-picker></app-date-picker>
-    </div> -->
-    <div class="task-input-item">
+<form [formGroup]="ItemForm">
+  <div class="task-input-parent">
+      <!-- description -->
+      <div class="task-input-item">
+        <input 
+          class="task-description-input" 
+          formControlName="descriptionField"/>
+      </div>
+      <!-- project-->
+      <div  class="task-input-item">
+        <app-auto-complete-selector 
+            [task]="currentTask" 
+            #projectField
+            name="projectField">
+        </app-auto-complete-selector>
+      </div>
+      <!-- tags-->
+      <div class="task-input-item">
+        <app-auto-complete-selector 
+           [task]="currentTask" 
+           #tagField
+           name="tagField">
+        </app-auto-complete-selector>
+      </div>
+      <!-- start time-->
+      <div class="task-input-item">
+          <app-time-picker 
+            [task]="currentTask">
+          </app-time-picker>
+      </div>
+      <!-- end time-->
+      <div class="task-input-item">
+          <app-time-picker 
+             [task]="currentTask">
+          </app-time-picker>
+      </div>
+      <!-- date picker -->
+      <!-- <div class="task-input-item" class="task-input-item">
+        <app-date-picker></app-date-picker>
+      </div> -->
+      <div class="task-input-item">
+          <button mat-icon-button color="primary">
+              <mat-icon aria-label="date button">today</mat-icon>
+          </button>
+      </div>
+      <!-- timer-->
+      <div class="task-input-item" >
+        <app-timer [task]="currentTask"></app-timer>
+      </div>
+      <!-- start button-->
+      <div class="task-input-item">
         <button mat-icon-button color="primary">
-            <mat-icon aria-label="date button">today</mat-icon>
-        </button>
-    </div>
-    <!-- timer-->
-    <div class="task-input-item" >
-      <app-timer></app-timer>
-    </div>
-    <!-- start button-->
-    <div class="task-input-item">
-      <button mat-icon-button color="primary">
-          <mat-icon aria-label="play / pause button">play_arrow</mat-icon>
-      </button>
-    </div>
-    <!-- delete button-->
-    <div class="task-input-item">
-        <button mat-icon-button color="warn">
-            <mat-icon aria-label="play / pause button">delete</mat-icon>
+            <mat-icon aria-label="play / pause button">play_arrow</mat-icon>
         </button>
       </div>
-  </div>
+      <!-- delete button-->
+      <div class="task-input-item">
+          <button mat-icon-button color="warn">
+              <mat-icon aria-label="play / pause button">delete</mat-icon>
+          </button>
+        </div>
+    </div>
+  </form>
