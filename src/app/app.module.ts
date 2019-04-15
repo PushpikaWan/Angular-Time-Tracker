@@ -15,9 +15,10 @@ import { TimePickerComponent } from './shared/components/time-picker/time-picker
 import { TimerComponent } from './shared/components/timer/timer.component';
 import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
 import { TaskInputComponent } from './task-input/task-input.component';
-import { TaskListComponent } from './task-list/task-list.component';
-import { TaskItemComponent } from './task-list/task-item/task-item.component';
 import { DateTimeService } from './services/date-time.service';
+import { TaskPageComponent } from './task-page/task-page.component';
+import { TaskListComponent } from './task-page/task-list/task-list.component';
+import { TaskItemComponent } from './task-page/task-list/task-item/task-item.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { DateTimeService } from './services/date-time.service';
     AutoCompleteSelectorComponent,
     TaskInputComponent,
     TaskListComponent,
-    TaskItemComponent
+    TaskItemComponent,
+    TaskPageComponent
   ],
   imports: [
     BrowserModule,
