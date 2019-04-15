@@ -17,10 +17,12 @@ export class TaskService{
     taskListChanged = new Subject;
 
     addTask( task: Task){
-        task.id = UUID.UUID();
+        task.id = task.id!== null? task.id:UUID.UUID();
         this.addToIndexedDb(task);
         this.updateItemFromIndexDB();
+        console.log("db changed");
     }
+
 
     getTasks(): Task[]{
         return this.taskList;
@@ -40,7 +42,7 @@ export class TaskService{
 
       private addToIndexedDb(task: Task) {
         this.db.tasks
-          .add(task)
+          .put(task)
           .then(async () => {
             const allItems: Task[] = await this.db.tasks.toArray();
             console.log('saved in DB, DB is now', allItems);
