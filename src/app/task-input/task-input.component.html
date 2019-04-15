@@ -2,27 +2,31 @@
   <div class="task-input-parent">
     <!-- description -->
     <div class="task-input-item">
-      <input class="task-description-input"/>
+      <input class="task-description-input" #taskField/>
     </div>
     <!-- project-->
-    <div  class="task-input-item">
-      <app-auto-complete-selector></app-auto-complete-selector>
+    <div class="task-input-item">
+      <form>
+        <app-auto-complete-selector 
+            [placeHolderValue]="'project'" 
+            #projectField>
+        </app-auto-complete-selector>
+      </form>
     </div>
     <!-- tags-->
     <div class="task-input-item">
-      <app-auto-complete-selector></app-auto-complete-selector>
+      <app-auto-complete-selector [placeHolderValue]="'tag'" #tagField></app-auto-complete-selector>
     </div>
     <!-- timer-->
-    <div class="task-input-item" >
-      <app-timer></app-timer>
+    <div class="task-input-item">
+      <app-timer #timerField></app-timer>
     </div>
     <!-- strat /stop button-->
     <div class="task-input-item" class="task-input-item">
-      <button (click)="onStartClick()" mat-raised-button  
-             [ngStyle]="isStarted ? {'background-color': 'red'} : {'background-color': 'blue'}" 
-              style="color:white" >
-              {{isStarted? 'End' : 'Start'}}
-    </button>
+      <button (click)="onStartClick()" mat-raised-button
+        [ngStyle]="isStarted ? {'background-color': 'red'} : {'background-color': 'blue'}" style="color:white">
+        {{isStarted? 'End' : 'Start'}}
+      </button>
     </div>
     <!-- change time picker to timer button-->
     <div class="task-input-item">

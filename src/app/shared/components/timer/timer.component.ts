@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
 import { Task } from 'src/app/models/task.module';
-import { TimerService } from 'src/app/services/timer.service';
+import { DateTimeService } from 'src/app/services/date-time.service';
+import { Timer } from 'src/app/models/timer.module';
 
 @Component({
   selector: 'app-timer',
@@ -12,13 +13,15 @@ import { TimerService } from 'src/app/services/timer.service';
 export class TimerComponent implements OnInit {
 
   private sub: Subscription;
-  timerValue: string;
+  timerValue: Timer =  {hours:0, mintues:0, seconds:0};
+  timerString: String;
   timer: any;
 
   @Input() task: Task;
   
-  constructor(private timerService: TimerService) { 
-    timerService.timerSetActive.subscribe(
+  constructor(private dateTimeService: DateTimeService) { 
+    this.timerString = dateTimeService.convertTimerToString(this.timerValue);
+    dateTimeService.timerStateChanged.subscribe(
       ( isStarted: Boolean) =>{
         if(!isStarted){
           this.oberserableTimer();
@@ -45,8 +48,8 @@ export class TimerComponent implements OnInit {
     let minutes = Math.floor(tick / 60) % 60;
     let seconds = Math.floor(tick - (hours*60*60 + minutes * 60));
 
-    this.timerValue = ` ${hours} h : ${minutes} m : ${seconds} s`
-
+    this.timerValue = {hours:hours, mintues:minutes, seconds:seconds};
+    this.timerString = this.dateTimeService.convertTimerToString(this.timerValue);
   }
 
   ngOnDestroy(){
