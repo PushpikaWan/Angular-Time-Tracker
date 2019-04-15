@@ -5,6 +5,8 @@ import { NgForm, FormGroup, FormBuilder } from '@angular/forms';
 import { TimePickerComponent } from 'src/app/shared/components/time-picker/time-picker.component';
 import { DateTimeService } from 'src/app/services/date-time.service';
 import { TaskService } from 'src/app/services/task.service';
+import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
+import { DatePickerComponent } from 'src/app/shared/components/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-task-item',
@@ -18,6 +20,8 @@ export class TaskItemComponent implements OnInit {
   @ViewChild('tagField') tagField: AutoCompleteSelectorComponent;
   @ViewChild('startTimeField') startTimeField: TimePickerComponent;
   @ViewChild('endTimeField') endTimeField: TimePickerComponent;
+  @ViewChild('dateField') dateField: DatePickerComponent;
+  @ViewChild('timerField') timerField: TimerComponent;
 
   ItemForm: FormGroup;
 
@@ -46,6 +50,9 @@ export class TaskItemComponent implements OnInit {
       ),
       endTimeField: this.endTimeField.timePickerControl.setValue(
         this.dateTimeService.convertTimeToString(this.currentTask.endTime)
+      ),
+      dateField: this.dateField.datePickerControl.setValue(
+        this.currentTask.date
       ),
     });
   }
@@ -78,7 +85,7 @@ export class TaskItemComponent implements OnInit {
       value => { 
         console.log("starting time changed", value);
         this.refreshTimerValue();
-        this.currentTask.startTime = value;
+        this.currentTask.startTime = this.dateTimeService.convertStringToTime(value);
         //changetimer value
         this.taskService.addTask(this.currentTask);
      }
@@ -88,8 +95,16 @@ export class TaskItemComponent implements OnInit {
       value => { 
         console.log("end time changed", value); 
         this.refreshTimerValue();
-        this.currentTask.endTime = value;
+        this.currentTask.endTime = this.dateTimeService.convertStringToTime(value);
          //changetimer value
+        this.taskService.addTask(this.currentTask);
+      }
+    );
+
+    this.dateField.datePickerControl.valueChanges.subscribe(
+      value => { 
+        console.log("date changed", value); 
+        this.currentTask.date = value;
         this.taskService.addTask(this.currentTask);
       }
     );
@@ -101,7 +116,10 @@ export class TaskItemComponent implements OnInit {
   }
 
   private onDeleteItem(){
-    this.taskService.deleteTask(this.currentTask.id);
+    if(window.confirm(`Are sure you want to delete this ${this.currentTask.description} item ?`)){
+      //put your delete method logic here
+      this.taskService.deleteTask(this.currentTask.id);
+     }
   }
 
 }

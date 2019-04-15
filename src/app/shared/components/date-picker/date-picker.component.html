@@ -1,7 +1,12 @@
-<p>
-  <mat-form-field>
-    <input matInput [matDatepicker]="dp3" disabled>
+<form>
+    <input 
+      matInput 
+      [matDatepicker]="dp3" 
+      [formControl]="datePickerControl"
+      hidden>
     <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-  </mat-form-field>
-</p>
+    <mat-datepicker 
+      #dp3 
+      disabled="false">
+    </mat-datepicker>
+</form>

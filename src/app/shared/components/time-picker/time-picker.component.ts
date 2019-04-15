@@ -18,13 +18,5 @@ export class TimePickerComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    if(this.task !== undefined){
-      this.initalizeValue();
-    }
-  }
-
-  private initalizeValue() {
-    
   }
 }

@@ -39,18 +39,19 @@
           </app-time-picker>
       </div>
       <!-- date picker -->
-      <!-- <div class="task-input-item" class="task-input-item">
-        <app-date-picker></app-date-picker>
-      </div> -->
-      <div class="task-input-item">
-          <button mat-icon-button color="primary">
-              <mat-icon aria-label="date button">today</mat-icon>
-          </button>
+      <div class="task-input-item" class="task-input-item">
+        <app-date-picker
+          [task]="currentTask"  
+          name="dateField"
+          #dateField>
+        </app-date-picker>
       </div>
       <!-- timer-->
       <div class="task-input-item" >
         <app-timer 
-          [task]="currentTask">
+          [task]="currentTask"
+          name="timerField"
+          #timerField>
         </app-timer>
       </div>
       <!-- start button-->
