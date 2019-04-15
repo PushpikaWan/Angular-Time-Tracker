@@ -7,8 +7,8 @@ export class Task{
     id?: String;
     description: String;
     project: Project
-    tag?: Tag
-    time?: Timer;
+    tag: Tag
+    timer: Timer;
     state?: String; 
     date? : Date;
     startingTime? : Time;
