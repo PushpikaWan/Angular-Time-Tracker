@@ -39,11 +39,11 @@ export class DateTimeService {
   getTimeDiff(time1: Time, time2: Time): Time {
     //check isbefore first then minus value will be not there
     let diffMins: number = this.getDiffInMins(time1, time2);
-    return { hours: (diffMins / 60), minutes: (diffMins % 60) }
+    return { hours: Math.floor(diffMins / 60), minutes: (diffMins % 60), seconds:0 }
   }
 
   isBefore(time1: Time, time2: Time): Boolean {
-    return this.getDiffInMins(time1,time2)>0;
+    return this.getDiffInMins(time1,time2) > 0;
   }
 
   isFuture(date: Date, time: Time): Boolean {
@@ -51,7 +51,9 @@ export class DateTimeService {
     if(currentDate < date){
       return true;
     }
-    if(currentDate == date){
+    if(currentDate.getFullYear() == date.getFullYear()
+       && currentDate.getMonth() == date.getMonth() 
+       && currentDate.getDate() == date.getDate()){
       return this.isBefore({hours:currentDate.getHours(),minutes: currentDate.getMinutes()},time);
     }
     return false;
