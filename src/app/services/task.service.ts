@@ -17,7 +17,8 @@ export class TaskService{
     taskListChanged = new Subject;
 
     addTask( task: Task){
-        task.id = task.id!== null? task.id:UUID.UUID();
+        task.id = (task.id !== undefined? task.id:UUID.UUID());
+        console.log("key",task.id);
         this.addToIndexedDb(task);
         this.updateItemFromIndexDB();
         console.log("db changed");
