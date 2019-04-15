@@ -49,7 +49,9 @@
       </div>
       <!-- timer-->
       <div class="task-input-item" >
-        <app-timer [task]="currentTask"></app-timer>
+        <app-timer 
+          [task]="currentTask">
+        </app-timer>
       </div>
       <!-- start button-->
       <div class="task-input-item">
@@ -59,7 +61,7 @@
       </div>
       <!-- delete button-->
       <div class="task-input-item">
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="warn" (click)="onDeleteItem()">
               <mat-icon aria-label="play / pause button">delete</mat-icon>
           </button>
       </div>
