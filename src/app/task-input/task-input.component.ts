@@ -55,6 +55,7 @@ export class TaskInputComponent implements OnInit {
           description:this.taskField.nativeElement.value,
           project:this.projectField.myControl.value,
           tag:this.tagField.myControl.value,
+          date:new Date(),
           timer:this.timerField.timerValue,
           startTime: this.timerField.startTime,
           endTime: this.timerField.endTime,
