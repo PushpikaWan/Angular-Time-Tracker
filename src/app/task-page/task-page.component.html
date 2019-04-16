@@ -1,3 +1,6 @@
-<p>
-  task-page works!
-</p>
+<app-task-input class="task-input-panel"></app-task-input>
+<app-task-list 
+            class="task-list-panel"  
+            *ngFor="let item of taskListByDate" 
+            [DateSpecificTaskList] = "item">
+</app-task-list>
