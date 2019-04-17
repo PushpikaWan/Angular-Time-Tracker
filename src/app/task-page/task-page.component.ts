@@ -10,7 +10,7 @@ import { groupBy } from 'rxjs/operators';
 })
 export class TaskPageComponent implements OnInit {
 
-  taskListByDate: any; //todo add relevent type for this
+  taskListByDate: DateSpecificTask[]; //todo add relevent type for this
   
   constructor(private taskService: TaskService) { }
 
@@ -18,18 +18,25 @@ export class TaskPageComponent implements OnInit {
     this.taskService.taskListChanged.subscribe(
       (taskData: Task[]) => {
           this.createDateSpecificList(taskData);
-          // this.taskListByDate=taskData;
-          // console.log(this.taskListByDate);
       }
     );
   }
 
   private createDateSpecificList(taskData : Task[]) {
-    let result = taskData.map((item) => { 
-      return this.getPresnetableDate(item["date"]); 
+    const result:  DateSpecificTask[] = taskData.map((item) => { 
+      return {date:this.getPresnetableDate(item["date"]) , tasks:[]};
     });
     console.log(result);
 
+    taskData.map((val, i) => {
+      for (var i=0; i<result.length; i++) {
+          if(this.arePresnetableDatesEquals(result[i].date,this.getPresnetableDate(val.date))){
+            result[i].tasks.push(val);
+          }
+      }
+    });
+
+    console.log(" result_",result);
     
   }
 
@@ -37,14 +44,9 @@ export class TaskPageComponent implements OnInit {
     return {date:date.getDate(),month:date.getMonth(), year: date.getFullYear()};
   }
 
-
-  // private groupBy = (xs) => {
-  //   return xs.reduce(
-  //     (rv, x) =>{
-  //     (rv[this.getPresnetableDate(x.date)] = rv[this.getPresnetableDate(x.date)] || []).push(x);
-  //     return rv;
-  //   }, {});
-  // };
+  arePresnetableDatesEquals(date1: PresentableDate, date2: PresentableDate): boolean{
+    return (date1.date === date2.date && date1.month === date2.month && date1.year === date2.year);
+  }
 
 }
 
@@ -53,5 +55,11 @@ export class PresentableDate{
     date: number;
     month: number;
     year: number;
+}
+
+export class DateSpecificTask{
+
+  date: PresentableDate;
+  tasks?: Task[];
 
 }
