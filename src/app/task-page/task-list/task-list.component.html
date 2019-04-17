@@ -10,19 +10,19 @@
           </div>
           <div class="panle-task-name">
             <mat-panel-description>
-              {{date}}
+              {{date.year}} /   {{date.month}} /  {{date.date}}
             </mat-panel-description>
           </div>
           <div class="panle-task-name">
             <mat-panel-description class="panel-date">
               <div>
-                <B> Total :</B>{{totalHours}}
+                <B> Total </B>{{totalTime.hours}}h : {{totalTime.minutes}}min
               </div>
             </mat-panel-description>
           </div>
         </div>
       </mat-expansion-panel-header>
-      <app-task-item  *ngFor="let item of DateSpecificTaskList" [currentTask] = "item"></app-task-item>
+      <app-task-item  *ngFor="let item of taskList" [currentTask] = "item"></app-task-item>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
