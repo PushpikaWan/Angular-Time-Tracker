@@ -6,6 +6,7 @@ import { AutoCompleteSelectorComponent } from '../shared/components/auto-complet
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task.module';
 import { TimerComponent } from '../shared/components/timer/timer.component';
+import { SelectSearchComponent } from '../shared/components/select-search/select-search.component';
 
 @Component({
   selector: 'app-task-input',
@@ -14,8 +15,8 @@ import { TimerComponent } from '../shared/components/timer/timer.component';
 })
 export class TaskInputComponent implements OnInit {
 
-  @ViewChild('projectField') projectField : AutoCompleteSelectorComponent;
-  @ViewChild('tagField') tagField : AutoCompleteSelectorComponent;
+  @ViewChild('projectField') projectField : SelectSearchComponent;
+  @ViewChild('tagField') tagField : SelectSearchComponent;
   @ViewChild('taskField') taskField : ElementRef;
   @ViewChild('timerField') timerField : TimerComponent;
 
@@ -43,8 +44,8 @@ export class TaskInputComponent implements OnInit {
   }
 
    private isValidData() : Boolean{
-      console.log("project ref",this.projectField.myControl.value);
-      console.log("tag ref",this.tagField.myControl.value);
+      console.log("project ref",this.projectField.selectFilterCtrl.value);
+      console.log("tag ref",this.tagField.selectFilterCtrl.value);
       console.log("task ref",this.taskField.nativeElement.value);
       console.log("timer ref",this.timerField.timerString);
       return true;
@@ -53,8 +54,8 @@ export class TaskInputComponent implements OnInit {
     private saveData(){
       this.taskService.addTask({
           description:this.taskField.nativeElement.value,
-          project:this.projectField.myControl.value,
-          tag:this.tagField.myControl.value,
+          project:this.projectField.selectFilterCtrl.value,
+          tag:this.tagField.selectFilterCtrl.value,
           date:new Date(),
           timer:this.timerField.timerValue,
           startTime: this.timerField.startTime,

@@ -8,19 +8,19 @@
       </div>
       <!-- project-->
       <div  class="task-input-item">
-        <app-auto-complete-selector 
+        <app-select-search
             [task]="currentTask" 
             name="projectField"
             #projectField>
-        </app-auto-complete-selector>
+        </app-select-search>
       </div>
       <!-- tags-->
       <div class="task-input-item">
-        <app-auto-complete-selector 
+        <app-select-search
            [task]="currentTask" 
            #tagField
            name="tagField">
-        </app-auto-complete-selector>
+        </app-select-search>
       </div>
       <!-- start time-->
       <div class="task-input-item">

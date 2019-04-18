@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyOwnCustomMaterialModule } from './shared/material.module';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { DateTimeService } from './services/date-time.service';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { TaskListComponent } from './task-page/task-list/task-list.component';
 import { TaskItemComponent } from './task-page/task-list/task-item/task-item.component';
+import { SelectSearchComponent } from './shared/components/select-search/select-search.component';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import { TaskItemComponent } from './task-page/task-list/task-item/task-item.com
     TaskInputComponent,
     TaskListComponent,
     TaskItemComponent,
-    TaskPageComponent
+    TaskPageComponent,
+    SelectSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { TaskItemComponent } from './task-page/task-list/task-item/task-item.com
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxMatSelectSearchModule
   ],
   providers: [
     TaskService,
