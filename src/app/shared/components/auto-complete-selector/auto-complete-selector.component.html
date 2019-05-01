@@ -1,18 +1,18 @@
 <form class="example-full-width">
-  <mat-form-field class="example-full-width" [floatLabel] = "'never'" >
+  <mat-form-field class="example-full-width" [floatLabel]="'never'">
     <mat-select placeholder={{placeHolderValue}} [formControl]="myControl">
-        <input class="mat-option" type="text" 
-        placeholder={{placeHolderValue}} 
-        aria-label="Number" 
-        matInput>
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-              {{option}}
-            </mat-option>
-                <button class="mat-option" mat-button style="color:blue" (click)="addClicked()">
-                    <mat-icon style="color:blue">add</mat-icon>
-                   Create new {{placeHolderValue}}
-                </button>
+      <input class="mat-option" type="text" placeholder={{placeHolderValue}} [formControl]="myOptionControl" aria-label="Number" matInput>
+      <mat-option style="color:gray" (click)="defaultItemClicked()">
+          no {{placeHolderValue}}
+      </mat-option>
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+      <button class="mat-option" mat-button style="color:blue" (click)="addClicked()">
+        <mat-icon style="color:blue">add</mat-icon>
+        Create new {{placeHolderValue}}
+      </button>
     </mat-select>
-    
+
   </mat-form-field>
 </form>

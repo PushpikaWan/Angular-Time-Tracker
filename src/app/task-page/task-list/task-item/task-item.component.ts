@@ -59,15 +59,16 @@ export class TaskItemComponent implements OnInit {
   }
 
   private registerListeners() {
-    this.ItemForm.get('descriptionField').valueChanges.subscribe(
-      value => {
-        console.log("descritption changed", value);
-        this.currentTask.description = value;
-        this.taskService.addTask(this.currentTask);
-      }
-    );
 
-    // todo use proper updte method
+     // todo use proper updte method
+    // this.ItemForm.get('descriptionField').valueChanges.subscribe(
+    //   value => {
+    //     console.log("descritption changed", value);
+    //     this.currentTask.description = value;
+    //     this.taskService.addTask(this.currentTask);
+    //   }
+    // );
+
     this.projectField.myControl.valueChanges.subscribe(
       value => {
         console.log("projectName changed", value);

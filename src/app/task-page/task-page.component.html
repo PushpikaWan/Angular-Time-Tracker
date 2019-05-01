@@ -3,10 +3,10 @@
         <app-task-input class="task-input-panel"></app-task-input>
     </div>
     <div class="row">
-            <app-task-list 
-            class="task-list-panel"  
-            *ngFor="let item of taskListByDate" 
-            [dateSpecificTaskList] = "item">
-</app-task-list>
+        <div class="col-md-12">
+            <app-task-list class="task-list-panel" *ngFor="let item of taskListByDate" [dateSpecificTaskList]="item">
+            </app-task-list>
+        </div>
+
     </div>
 </div>

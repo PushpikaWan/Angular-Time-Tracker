@@ -14,13 +14,14 @@ export class AutoCompleteSelectorComponent implements OnInit {
   @Input() task : Task; 
   
   myControl = new FormControl();
+  myOptionControl= new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
   
   constructor(){
   }
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges
+    this.filteredOptions = this.myOptionControl.valueChanges
     .pipe( startWith(''),map(value => this._filter(value)));
   }
   
@@ -31,5 +32,8 @@ export class AutoCompleteSelectorComponent implements OnInit {
 
   addClicked(){
     console.log("clicked");
+  }
+  defaultItemClicked(){
+    console.log("default item clicked");
   }
 }

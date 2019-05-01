@@ -14,7 +14,7 @@ export class DateTimeService {
   TimeStateChanged = new Subject;
 
   convertTimerToString(timer: Timer): String {
-    return ` ${timer.hours} h : ${timer.minutes} min : ${timer.seconds} s`;
+    return ` ${timer.hours} h : ${timer.minutes} m : ${timer.seconds} s`;
   }
 
   convertTimeToString(time: Time): String {

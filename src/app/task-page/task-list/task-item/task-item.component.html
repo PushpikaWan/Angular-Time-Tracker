@@ -9,6 +9,8 @@
       <!-- project-->
       <div  class="task-input-item">
         <app-auto-complete-selector
+            style="margin:5px"
+            [placeHolderValue]="'project'" 
             [task]="currentTask" 
             name="projectField"
             #projectField>
@@ -17,6 +19,8 @@
       <!-- tags-->
       <div class="task-input-item">
         <app-auto-complete-selector
+           style="margin:5px"
+           [placeHolderValue]="'tag'" 
            [task]="currentTask" 
            #tagField
            name="tagField">
