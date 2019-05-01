@@ -20,12 +20,26 @@ export class TaskInputComponent implements OnInit {
   @ViewChild('taskField') taskField : ElementRef;
   @ViewChild('timerField') timerField : TimerComponent;
 
-  isStarted : boolean = false;
+  descriptionControl : FormControl = new FormControl();
 
+  isStarted : boolean = false;
+  //this selected item is null until it call from exsisting record
+  selectedItem : Task;
   constructor(private taskService: TaskService,private dateTimeService: DateTimeService) { }
 
   ngOnInit() {
+    this.dateTimeService.continueItemChanged.subscribe(
+        (selectedTask) => this.setDataAndStrat(selectedTask)
+    );
   
+  }
+  setDataAndStrat(selectedTask: {}) {
+    this.selectedItem = <Task>selectedTask;
+    console.log("got...->",this.selectedItem.timer);
+    this.descriptionControl.setValue(this.selectedItem.description);
+    this.projectField.myControl.setValue(this.selectedItem.project);
+    this.tagField.myControl.setValue(this.selectedItem.tag);
+    this.onStartClick();
   }
 
   onStartClick(){
@@ -56,7 +70,7 @@ export class TaskInputComponent implements OnInit {
           description:this.taskField.nativeElement.value,
           project:this.projectField.myControl.value,
           tag:this.tagField.myControl.value,
-          date:new Date(),
+          date: (this.selectedItem !== null? this.selectedItem.date:new Date()),
           timer:this.timerField.timerValue,
           startTime: this.timerField.startTime,
           endTime: this.timerField.endTime,

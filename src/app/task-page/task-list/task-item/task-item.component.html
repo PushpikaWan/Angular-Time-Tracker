@@ -59,7 +59,7 @@
         </app-timer>
       </div>
       <!-- start button-->
-      <div class="task-input-item">
+      <div class="task-input-item" (click)="onPlayItem()">
         <button mat-icon-button color="primary">
             <mat-icon aria-label="play / pause button">play_arrow</mat-icon>
         </button>
@@ -72,3 +72,4 @@
       </div>
     </div>
   </form>
+  <mat-divider></mat-divider>

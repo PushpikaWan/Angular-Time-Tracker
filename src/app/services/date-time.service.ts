@@ -9,6 +9,7 @@ export class DateTimeService {
    * if start timer click this return true otherwise false
    * */
   timerStateChanged = new Subject;
+  continueItemChanged = new Subject;
 
   dateStateChanged = new Subject;
   TimeStateChanged = new Subject;

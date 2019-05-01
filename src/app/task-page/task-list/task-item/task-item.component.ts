@@ -144,4 +144,8 @@ export class TaskItemComponent implements OnInit {
     }
   }
 
+  private onPlayItem(){
+    this.dateTimeService.continueItemChanged.next(this.currentTask);
+  }
+
 }
