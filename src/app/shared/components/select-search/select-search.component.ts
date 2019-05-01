@@ -13,7 +13,6 @@ interface Bank {
 @Component({
   selector: 'app-select-search',
   templateUrl: './select-search.component.html',
-  styleUrls: ['./select-search.component.scss']
 })
 
 export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -110,6 +109,10 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
     this.filteredBanks.next(
       this.banks.filter(bank => bank.name.toLowerCase().indexOf(search) > -1)
     );
+  }
+
+  private addClicked(){
+    console.log("add clicked");
   }
 
 }

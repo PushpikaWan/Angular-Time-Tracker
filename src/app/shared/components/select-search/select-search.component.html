@@ -7,6 +7,12 @@
       <mat-option *ngFor="let bank of filteredBanks | async" [value]="bank">
         {{bank.name}}
       </mat-option>
+      <mat-option>
+          <button mat-button style="color:blue" (click)="addClicked()">
+              <mat-icon style="color:blue">add</mat-icon>
+             Create new {{placeHolderValue}}
+            </button>
+      </mat-option>
     </mat-select>
   </mat-form-field>
 </form>

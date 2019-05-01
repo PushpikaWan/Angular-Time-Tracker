@@ -1,41 +1,42 @@
-<div class="parent">
-  <div class="task-input-parent">
-    <!-- description -->
-    <div class="task-input-item">
-      <input class="task-description-input" #taskField/>
-    </div>
-    <!-- project-->
-    <div class="task-input-item">
-      <form>
-        <app-select-search
-            [placeHolderValue]="'project'" 
-            #projectField>
+<div class="container my-container">
+    <div class="row">
+       <!-- description -->
+      <div class="col col-4">
+        <input class="task-description-input" #taskField/>
+      </div>
+      <!-- project-->
+      <div class="col col-2">
+          <form>
+              <app-select-search
+                  [placeHolderValue]="'project'" 
+                  #projectField>
+              </app-select-search>
+            </form>
+      </div>
+      <!-- tag -->
+      <div class="col col-2">
+          <app-select-search
+          [placeHolderValue]="'tag'" 
+          #tagField>
         </app-select-search>
-      </form>
-    </div>
-    <!-- tags-->
-    <div class="task-input-item">
-      <app-select-search
-        [placeHolderValue]="'tag'" 
-        #tagField>
-      </app-select-search>
-    </div>
-    <!-- timer-->
-    <div class="task-input-item">
-      <app-timer #timerField></app-timer>
-    </div>
-    <!-- strat /stop button-->
-    <div class="task-input-item" class="task-input-item">
-      <button (click)="onStartClick()" mat-raised-button
-        [ngStyle]="isStarted ? {'background-color': 'red'} : {'background-color': 'blue'}" style="color:white">
-        {{isStarted? 'End' : 'Start'}}
-      </button>
-    </div>
-    <!-- change time picker to timer button-->
-    <div class="task-input-item">
-      <!-- <button class="task-button" (click)=onStart() mat-fab color="primary">
+      </div>
+      <!-- timer -->
+      <div class="col col-2 align-itmes-center">
+          <app-timer #timerField></app-timer>
+      </div>
+
+      <!-- start / stop button-->
+      <div class="col col-2">
+          <button type="button" class="btn btn-primary btn-block" (click)="onStartClick()" mat-raised-button
+            [ngStyle]="isStarted ? {'background-color': 'red'} : {'background-color': 'blue'}" style="color:white">
+          {{isStarted? 'End' : 'Start'}}
+        </button>
+      </div>
+      <!-- change time picker to timer button-->
+      <!-- <div class="col col-1">
+      <button class="task-button" (click)=onStart() mat-fab color="primary">
         <mat-icon aria-label="play / pause button">play_arrow</mat-icon>
-      </button> -->
+      </button>
+      </div> -->
     </div>
-  </div>
 </div>
