@@ -1,5 +1,5 @@
 <div class="container my-container">
-    <div class="row">
+    <div class="row vertical-center">
        <!-- description -->
       <div class="col col-4">
         <input class="task-description-input" #taskField/>
@@ -7,21 +7,21 @@
       <!-- project-->
       <div class="col col-2">
           <form>
-              <app-select-search
+              <app-auto-complete-selector
                   [placeHolderValue]="'project'" 
                   #projectField>
-              </app-select-search>
+              </app-auto-complete-selector>
             </form>
       </div>
       <!-- tag -->
       <div class="col col-2">
-          <app-select-search
+          <app-auto-complete-selector
           [placeHolderValue]="'tag'" 
           #tagField>
-        </app-select-search>
+      </app-auto-complete-selector>
       </div>
       <!-- timer -->
-      <div class="col col-2 align-itmes-center">
+      <div class="col col-2">
           <app-timer #timerField></app-timer>
       </div>
 

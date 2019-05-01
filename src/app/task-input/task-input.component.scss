@@ -1,8 +1,14 @@
 .my-container{
-    padding: 0.5em;
+    padding-top: 0.5em;
     border: 1px solid blue;
     justify-content: center;
 }
+
+.vertical-center {
+    /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
+  }
 
 .task-input-parent{
     display: grid;

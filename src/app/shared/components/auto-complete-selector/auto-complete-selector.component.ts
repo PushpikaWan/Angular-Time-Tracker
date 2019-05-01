@@ -23,9 +23,13 @@ export class AutoCompleteSelectorComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
     .pipe( startWith(''),map(value => this._filter(value)));
   }
+  
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  }
+
+  addClicked(){
+    console.log("clicked");
   }
 }

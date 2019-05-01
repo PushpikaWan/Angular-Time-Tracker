@@ -17,8 +17,8 @@ import { SelectSearchComponent } from 'src/app/shared/components/select-search/s
 export class TaskItemComponent implements OnInit {
 
   @Input() currentTask: Task;
-  @ViewChild('projectField') projectField: SelectSearchComponent;
-  @ViewChild('tagField') tagField: SelectSearchComponent;
+  @ViewChild('projectField') projectField: AutoCompleteSelectorComponent;
+  @ViewChild('tagField') tagField: AutoCompleteSelectorComponent;
   @ViewChild('startTimeField') startTimeField: TimePickerComponent;
   @ViewChild('endTimeField') endTimeField: TimePickerComponent;
   @ViewChild('dateField') dateField: DatePickerComponent;
@@ -44,8 +44,8 @@ export class TaskItemComponent implements OnInit {
   private initializeValues() {
     this.ItemForm = this.formBuilder.group({
       descriptionField: this.currentTask.description,
-      projectField: this.projectField.selectFilterCtrl.setValue(this.currentTask.project),
-      tagField: this.tagField.selectFilterCtrl.setValue(this.currentTask.tag),
+      projectField: this.projectField.myControl.setValue(this.currentTask.project),
+      tagField: this.tagField.myControl.setValue(this.currentTask.tag),
       startTimeField: this.startTimeField.timePickerControl.setValue(
         this.dateTimeService.convertTimeToString(this.currentTask.startTime)
       ),
@@ -68,17 +68,17 @@ export class TaskItemComponent implements OnInit {
     );
 
     // todo use proper updte method
-    // this.projectField.selectFilterCtrl.valueChanges.subscribe(
-    //   value => {
-    //     console.log("projectName changed", value);
-    //     this.currentTask.project = value;
-    //     this.taskService.addTask(this.currentTask);
-    //   }
-    // );
-
-    this.tagField.selectFilterCtrl.valueChanges.subscribe(
+    this.projectField.myControl.valueChanges.subscribe(
       value => {
-        console.log("tag changed", value);
+        console.log("projectName changed", value);
+        this.currentTask.project = value;
+        this.taskService.addTask(this.currentTask);
+      }
+    );
+
+    this.tagField.myControl.valueChanges.subscribe(
+      value => {
+        console.log("projectName changed", value);
         this.currentTask.tag = value;
         this.taskService.addTask(this.currentTask);
       }

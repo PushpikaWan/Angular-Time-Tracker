@@ -15,8 +15,8 @@ import { SelectSearchComponent } from '../shared/components/select-search/select
 })
 export class TaskInputComponent implements OnInit {
 
-  @ViewChild('projectField') projectField : SelectSearchComponent;
-  @ViewChild('tagField') tagField : SelectSearchComponent;
+  @ViewChild('projectField') projectField : AutoCompleteSelectorComponent;
+  @ViewChild('tagField') tagField : AutoCompleteSelectorComponent;
   @ViewChild('taskField') taskField : ElementRef;
   @ViewChild('timerField') timerField : TimerComponent;
 
@@ -44,8 +44,8 @@ export class TaskInputComponent implements OnInit {
   }
 
    private isValidData() : Boolean{
-      console.log("project ref",this.projectField.selectFilterCtrl.value);
-      console.log("tag ref",this.tagField.selectFilterCtrl.value);
+    console.log("project ref",this.projectField.myControl.value);
+    console.log("tag ref",this.tagField.myControl.value);
       console.log("task ref",this.taskField.nativeElement.value);
       console.log("timer ref",this.timerField.timerString);
       return true;
@@ -54,8 +54,8 @@ export class TaskInputComponent implements OnInit {
     private saveData(){
       this.taskService.addTask({
           description:this.taskField.nativeElement.value,
-          project:this.projectField.selectFilterCtrl.value,
-          tag:this.tagField.selectFilterCtrl.value,
+          project:this.projectField.myControl.value,
+          tag:this.tagField.myControl.value,
           date:new Date(),
           timer:this.timerField.timerValue,
           startTime: this.timerField.startTime,

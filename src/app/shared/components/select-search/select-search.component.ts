@@ -13,6 +13,7 @@ interface Bank {
 @Component({
   selector: 'app-select-search',
   templateUrl: './select-search.component.html',
+  styleUrls: ['./select-search.component.scss']
 })
 
 export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
@@ -29,7 +30,7 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
 
   /** list of banks */
   private banks: Bank[] = [
-    {name: 'Bank A (Switzerland)', id: 'A'},
+    {name: 'Bank A (Switzerland) zxfsdfsdfsdfsd', id: 'A'},
     {name: 'Bank B (Switzerland)', id: 'B'},
     {name: 'Bank C (France)', id: 'C'},
     {name: 'Bank D (France)', id: 'D'},
@@ -90,10 +91,12 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
       .pipe(take(1), takeUntil(this._onDestroy))
       .subscribe(() => {
         this.singleSelect.compareWith = (a: Bank, b: Bank) => a.id === b.id;
+        console.log("set initial val");
       });
   }
 
   private filterBanks() {
+    console.log("filter banks:",this.selectFilterCtrl.value);
     if (!this.banks) {
       return;
     }
@@ -101,6 +104,7 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
     let search = this.selectFilterCtrl.value;
     if (!search) {
       this.filteredBanks.next(this.banks.slice());
+      console.log("che1",search);
       return;
     } else {
       search = search.toLowerCase();
@@ -108,10 +112,11 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
     // filter the banks
     this.filteredBanks.next(
       this.banks.filter(bank => bank.name.toLowerCase().indexOf(search) > -1)
-    );
+      );
   }
 
   private addClicked(){
+    this.selectFilterCtrl.setValue("");
     console.log("add clicked");
   }
 
