@@ -1,3 +1,13 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-task-page></app-task-page>
-<router-outlet></router-outlet>
+<div class="d-flex" id="wrapper">
+
+    <app-side-bar></app-side-bar>
+
+    <div id="page-content-wrapper">
+        <app-nav-bar></app-nav-bar>
+        <div class="container-fluid">
+            <app-task-page></app-task-page>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

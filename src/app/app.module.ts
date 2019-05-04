@@ -21,6 +21,8 @@ import { TaskPageComponent } from './task-page/task-page.component';
 import { TaskListComponent } from './task-page/task-list/task-list.component';
 import { TaskItemComponent } from './task-page/task-list/task-item/task-item.component';
 import { SelectSearchComponent } from './shared/components/select-search/select-search.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { SelectSearchComponent } from './shared/components/select-search/select-
     TaskListComponent,
     TaskItemComponent,
     TaskPageComponent,
-    SelectSearchComponent
+    SelectSearchComponent,
+    SideBarComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
