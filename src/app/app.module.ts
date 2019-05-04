@@ -15,14 +15,14 @@ import { DatePickerComponent } from './shared/components/date-picker/date-picker
 import { TimePickerComponent } from './shared/components/time-picker/time-picker.component';
 import { TimerComponent } from './shared/components/timer/timer.component';
 import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
-import { TaskInputComponent } from './task-input/task-input.component';
 import { DateTimeService } from './services/date-time.service';
-import { TaskPageComponent } from './task-page/task-page.component';
-import { TaskListComponent } from './task-page/task-list/task-list.component';
-import { TaskItemComponent } from './task-page/task-list/task-item/task-item.component';
 import { SelectSearchComponent } from './shared/components/select-search/select-search.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { TaskListComponent } from 'src/components/task-page/task-list/task-list.component';
+import { TaskInputComponent } from 'src/components/task-page/task-input/task-input.component';
+import { TaskItemComponent } from 'src/components/task-page/task-list/task-item/task-item.component';
+import { TaskPageComponent } from 'src/components/task-page/task-page.component';
+import { SideBarComponent } from 'src/components/side-bar/side-bar.component';
+import { NavBarComponent } from 'src/components/nav-bar/nav-bar.component';
 
 
 @NgModule({

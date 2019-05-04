@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../models/task.module';
-import { TaskService } from '../services/task.service';
 import { groupBy } from 'rxjs/operators';
+import { TaskService } from 'src/app/services/task.service';
+import { Task } from 'src/app/models/task.module';
 
 @Component({
   selector: 'app-task-page',
