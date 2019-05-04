@@ -1,16 +1,16 @@
 <div class="task-expansion-parent">
   <mat-accordion>
     <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header  style="background-color:lightgray">
         <div class="panel-header-content-parent">
           <div class="panle-task-name">
             <mat-panel-title>
-              Task
+                {{date.year}} /   {{date.month}} /  {{date.date}}
             </mat-panel-title>
           </div>
           <div class="panle-task-name">
             <mat-panel-description>
-              {{date.year}} /   {{date.month}} /  {{date.date}}
+             
             </mat-panel-description>
           </div>
           <div class="panle-task-name">

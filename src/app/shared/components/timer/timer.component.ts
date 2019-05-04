@@ -76,8 +76,7 @@ export class TimerComponent implements OnInit {
     let minutes = Math.floor(tick / 60) % 60;
     let seconds = Math.floor(tick - (hours*60*60 + minutes * 60));
 
-    this.timerValue = {hours:hours, minutes:minutes, seconds:seconds};
-    this.timerString = this.dateTimeService.convertTimerToString(this.timerValue);
+    this.updateTimer({hours:hours, minutes:minutes, seconds:seconds});
   }
 
   ngOnDestroy(){
@@ -86,4 +85,13 @@ export class TimerComponent implements OnInit {
    // this.sub.unsubscribe();
   }
 
+  resetTimer(){
+    this.updateTimer({hours:0, minutes:0, seconds:0});
+  }
+
+  private updateTimer(timeVal: {hours:number, minutes:number, seconds: number }){
+    this.timerValue = {hours:timeVal.hours, minutes:timeVal.minutes, seconds:timeVal.seconds};
+    this.timerString = this.dateTimeService.convertTimerToString(this.timerValue);
+    console.log("reset timer",this.timerString);
+  }
 }
