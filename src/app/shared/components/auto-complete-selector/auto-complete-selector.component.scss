@@ -5,8 +5,9 @@
 .mat-select-arrow {
   visibility: hidden;
 }
-.mat-input-underline {
-  visibility: hidden;
+
+.mat-input-container.app-input-no-underline .mat-input-underline{
+  display: none;
 }
 
 .vertical-center {

@@ -38,6 +38,8 @@ export class AutoCompleteSelectorComponent implements OnInit {
   }
   defaultItemClicked(){
     console.log("default item clicked");
+    this.myControl.setValue("dfgsef");
+    console.log("def",this.myControl.value);
   }
 
 }

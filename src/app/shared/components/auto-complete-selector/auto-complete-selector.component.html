@@ -1,6 +1,6 @@
 <form class="example-full-width">
   <mat-form-field class="example-full-width" [floatLabel]="'never'">
-    <mat-select [formControl]="myControl">
+    <mat-select [formControl]="myControl" placeholder={{placeHolderValue}}>
       <input class="mat-option" type="text" placeholder={{placeHolderValue}} [formControl]="myOptionControl" aria-label="Number" matInput>
       <mat-option style="color:gray" (click)="defaultItemClicked()">
           no {{placeHolderValue}}

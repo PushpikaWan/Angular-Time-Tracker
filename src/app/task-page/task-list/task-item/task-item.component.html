@@ -4,6 +4,9 @@
       <div class="task-input-item">
         <input 
           class="task-description-input" 
+          [ngStyle]=" hover ? {'border-width':'1px' } : {'border-width':'0px'}" 
+          (mouseover)="hover=true"
+          (mouseleave)="hover=false" 
           formControlName="descriptionField"/>
       </div>
       <!-- project-->
