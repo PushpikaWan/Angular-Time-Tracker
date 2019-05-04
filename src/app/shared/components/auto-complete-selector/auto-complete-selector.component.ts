@@ -20,7 +20,6 @@ export class AutoCompleteSelectorComponent implements OnInit {
   myOptionControl= new FormControl();
   options: string[] = ['One', 'Two', 'Three'];
   filteredOptions: Observable<string[]>;
-  private selectedValue: String;
   
   constructor(){
   }
@@ -39,10 +38,6 @@ export class AutoCompleteSelectorComponent implements OnInit {
   }
   defaultItemClicked(){
     console.log("default item clicked");
-    this.selectedValue = undefined;
   }
-  selectItem(item : String){
-    this.selectedValue = item;
-    console.log("selected item",this.myControl.value);
-  }
+
 }
