@@ -1,6 +1,4 @@
 .my-container{
-    padding-top: 0.5em;
-    border: 1px solid blue;
     justify-content: center;
 }
 
@@ -10,32 +8,19 @@
     align-items: center;
   }
 
-.task-input-parent{
-    display: grid;
-    grid-template-columns: 12fr 3fr 3fr 3fr 3fr 1fr; 
-    min-width: 500px;
-    max-height: 80px;
-    height: 100%;
-    // max-width: 200px;
-    width: 100%;
-    border-style: groove;
-}
+  .custom.mat-card{
+    padding: 1px;
+    padding-left: 10px;
+    padding-right: 10px;
+   }
 
-.task-input-item{
-    display: grid;
-    align-content: center;
-    justify-content: stretch;
-    max-height: 30px;
-    height: 100%;
-    width: 100%;
-    padding: 1em;
-}
+   .task-input-item{
+    width:100%;
+    padding: 5px;
+   }
 
-.task-description-input{
-    display: grid;
-    align-content: center;
-    justify-content: stretch;
-    min-width: 300px;
-    height: 100%;
-    width: 100%;
-}
+   .filter-list-item{
+       max-width: 150px;
+    //    min-width: 50px;
+       width: auto;
+   }
