@@ -33,6 +33,7 @@
     "luxon": "^1.12.1",
     "ngx-mat-select-search": "^1.7.2",
     "ngx-material-timepicker": "^3.0.2",
+    "ngx-toastr": "^10.0.2",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
   },

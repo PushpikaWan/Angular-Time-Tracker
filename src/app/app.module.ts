@@ -24,6 +24,8 @@ import { TaskPageComponent } from 'src/components/task-page/task-page.component'
 import { SideBarComponent } from 'src/components/side-bar/side-bar.component';
 import { NavBarComponent } from 'src/components/nav-bar/nav-bar.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { MyToastService } from './services/toastr.service';
 
 @NgModule({
   declarations: [
@@ -48,11 +50,13 @@ import { NavBarComponent } from 'src/components/nav-bar/nav-bar.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     TaskService,
     DateTimeService,
+    MyToastService
   ],
   bootstrap: [AppComponent]
 })

@@ -3,13 +3,16 @@ import { UUID } from 'angular2-uuid';
 import Dexie from 'dexie';
 
 import { Task } from "../models/task.module";
+import { Injectable } from "@angular/core";
+import { MyToastService } from "./toastr.service";
 
+@Injectable()
 export class TaskService{
 
     private taskList: Task[] = [];
     private db: any;
 
-    constructor(){
+    constructor(private toastr: MyToastService){
         this.createDatabase();
         this.updateItemFromIndexDB();
     }
@@ -17,11 +20,11 @@ export class TaskService{
     taskListChanged = new Subject;
 
     addTask( task: Task){
-        task.id = (task.id !== undefined? task.id:UUID.UUID());
+        const isUpdate: boolean = (task.id !== undefined);
+        task.id = (isUpdate? task.id:UUID.UUID());
         console.log("key",task.id);
-        this.addToIndexedDb(task);
+        this.addToIndexedDb(task,isUpdate);
         this.updateItemFromIndexDB();
-        console.log("db changed");
     }
 
 
@@ -30,7 +33,6 @@ export class TaskService{
     }
 
     deleteTask(taskId : String){
-        console.log("delete this",taskId);
         this.deleteItemsFromIndexedDb(taskId);
     }
 
@@ -41,12 +43,13 @@ export class TaskService{
         });
       }
 
-      private addToIndexedDb(task: Task) {
+      private addToIndexedDb(task: Task, isUpdate:boolean) {
         this.db.tasks
           .put(task)
           .then(async () => {
             const allItems: Task[] = await this.db.tasks.toArray();
             console.log('saved in DB, DB is now', allItems);
+            this.toastr.showSuccess(isUpdate ? "Record updated":"Record added");
           })
           .catch(e => {
             alert('Error: ' + (e.stack || e));
@@ -56,7 +59,6 @@ export class TaskService{
        private async updateItemFromIndexDB() {
           const allItems: Task[] = await this.db.tasks.toArray();
           this.taskList =  allItems;
-          console.log("updated senditems", allItems);
           this.taskListChanged.next(this.getTasks());
       }
 
@@ -67,7 +69,8 @@ export class TaskService{
         allItems.forEach((item: Task) => {
             if(item.id == id){
                 this.db.tasks.delete(item.id).then(() => {
-                    console.log(`item ${item.id} sent and deleted locally`);
+                    // console.log(`item ${item.id} sent and deleted locally`);
+                    this.toastr.showDanger("Record deleted");
                 });
             }
         });
