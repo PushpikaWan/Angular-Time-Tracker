@@ -3,12 +3,12 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Cambio Time Tracker </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Projects</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Tags</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Settings</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"routerLinkActive="active-item">Dashboard</a>
+        <a [routerLink]="['/tasks']" href="#" class="list-group-item list-group-item-action bg-light" routerLinkActive="active-item">Overview</a>
+        <a [routerLink]="['/projects']" href="#" class="list-group-item list-group-item-action bg-light" routerLinkActive="active-item">Projects</a>
+        <a [routerLink]="['/tags']" href="#" class="list-group-item list-group-item-action bg-light"routerLinkActive="active-item">Tags</a>
+        <a [routerLink]="['/profile']" href="#" class="list-group-item list-group-item-action bg-light" routerLinkActive="active-item">Profile</a>
+        <a [routerLink]="['/settings']" href="#" class="list-group-item list-group-item-action bg-light"routerLinkActive="active-item">Settings</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

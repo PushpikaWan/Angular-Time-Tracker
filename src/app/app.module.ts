@@ -26,6 +26,9 @@ import { NavBarComponent } from 'src/components/nav-bar/nav-bar.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { MyToastService } from './services/toastr.service';
+import { ProjectPageComponent } from 'src/components/project-page/project-page.component';
+import { TagPageComponent } from 'src/components/tag-page/tag-page.component';
+import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,10 @@ import { MyToastService } from './services/toastr.service';
     TaskPageComponent,
     SelectSearchComponent,
     SideBarComponent,
-    NavBarComponent
+    NavBarComponent,
+    ProjectPageComponent,
+    TagPageComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
