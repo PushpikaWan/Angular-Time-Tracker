@@ -1,7 +1,7 @@
 <form class="example-full-width">
   <mat-form-field class="example-full-width" [floatLabel]="'never'">
     <mat-select [formControl]="myControl" placeholder={{placeHolderValue}}>
-      <input class="mat-option" type="text" placeholder={{placeHolderValue}} [formControl]="myOptionControl" aria-label="Number" matInput>
+      <input class="mat-option" data-ng-trim="false" type="text" placeholder={{placeHolderValue}} [formControl]="myOptionControl" matInput>
       <mat-option style="color:gray" (click)="defaultItemClicked()">
           no {{placeHolderValue}}
         </mat-option>

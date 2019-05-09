@@ -16,6 +16,7 @@
             [placeHolderValue]="'project'" 
             [task]="currentTask" 
             name="projectField"
+            [autoCompleteItem]="autoCompleteProjectItems"
             #projectField>
         </app-auto-complete-selector>
       </div>
@@ -26,6 +27,7 @@
            [placeHolderValue]="'tag'" 
            [task]="currentTask" 
            #tagField
+           [autoCompleteItem]="autoCompleteTagItems"
            name="tagField">
         </app-auto-complete-selector>
       </div>

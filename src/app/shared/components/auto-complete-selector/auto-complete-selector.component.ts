@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, SimpleChange, SimpleChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { FormControl, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
@@ -29,13 +29,23 @@ export class AutoCompleteSelectorComponent implements OnInit {
   ngOnInit() {
     this.filteredOptions = this.myOptionControl.valueChanges
     .pipe( startWith(''),map(value => this._filter(value)));
-    this.options = this.autoCompleteItem; 
-    console.log(this.options);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const name: SimpleChange = changes.autoCompleteItem;
+    // console.log('prev value: ', name.previousValue);
+    this.options = name.currentValue;
+    //this is used to filter forcefully 
+    this.myOptionControl.setValue('');
   }
   
   private _filter(value: string): AutoCompleteItem[] {
-
+    console.log("search string", value);
+    if(this.options == undefined || this.options.length == 0){
+      return;
+    }
     const filterValue = value.toLowerCase();
+    console.log("filter value",filterValue);
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 
