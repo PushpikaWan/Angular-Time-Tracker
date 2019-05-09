@@ -79,6 +79,10 @@ export class TaskService {
     this.deleteProjectItemsFromIndexedDb(projectId);
   }
 
+  deleteTag(tagId: string) {
+    this.deleteTagItemsFromIndexedDb(tagId);
+  }
+
   private createDatabase() {
     this.db = new Dexie('MyTestDatabase');
     this.db.version(1).stores({

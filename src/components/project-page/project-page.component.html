@@ -1,16 +1,31 @@
-<mat-form-field class="example-chip-list">
-    <input [(colorPicker)]="color" [style.background]="color"/>
-    
-  <mat-chip-list #chipList>
-    <mat-chip *ngFor="let project of projectList" [selectable]="selectable"
-             [removable]="removable" (removed)="remove(project)">
-      {{project.name}}
-      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-    </mat-chip>
-    <!-- <input placeholder="New fruit..."
-           [matChipInputFor]="chipList"
-           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-           [matChipInputAddOnBlur]="addOnBlur"
-           (matChipInputTokenEnd)="add($event)"> -->
-  </mat-chip-list>
-</mat-form-field>
+<div class="container">
+  <div class="row my_header">
+    <div class="col col-9">
+      <h5>
+        Projects
+      </h5>
+    </div>
+    <div class="col col-3">
+      <button type="button" class="btn btn-primary btn-block" (click)="onAddProject()" mat-raised-button>
+        <mat-icon style="color:blue">add</mat-icon>
+        Create new Project
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <mat-form-field class="example-chip-list">
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let project of projectList" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(project)">
+          {{project.name}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <!-- <input placeholder="New fruit..."
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)"> -->
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
+</div>

@@ -1,8 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import {MatChipInputEvent, MatDialog} from '@angular/material';
 import { Project } from 'src/app/models/project.module';
 import { TaskService } from 'src/app/services/task.service';
+import { ProjectAddDialog } from 'src/app/shared/components/auto-complete-selector/add-dialog/add-dialog.component';
 
 @Component({
   selector: 'app-project-page',
@@ -18,7 +19,7 @@ export class ProjectPageComponent implements OnInit, OnDestroy {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   projectList: Project[] = [];
 
-  constructor(private taskService : TaskService) { }
+  constructor(private taskService : TaskService,public dialog: MatDialog) { }
 
   ngOnInit() {
     this.taskService.projectListChanged.subscribe(
@@ -56,5 +57,17 @@ export class ProjectPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // this.taskService.projectListChanged.unsubscribe();
+  }
+
+  onAddProject():void {
+    const dialogRef = this.dialog.open(ProjectAddDialog, {
+      width: '250px',
+      data: {type:"Project"}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = "sad";
+    });
   }
 }

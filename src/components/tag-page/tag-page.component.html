@@ -1,3 +1,31 @@
-<p>
-  tag-page works!
-</p>
+<div class="container">
+    <div class="row my_header">
+      <div class="col col-9">
+        <h5>
+          Tags
+        </h5>
+      </div>
+      <div class="col col-3">
+        <button type="button" class="btn btn-primary btn-block" (click)="onAddTag()" mat-raised-button>
+          <mat-icon style="color:blue">add</mat-icon>
+          Create new Tag
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let tag of tagList" [selectable]="selectable" [removable]="removable"
+            (removed)="remove(tag)">
+            {{tag.name}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <!-- <input placeholder="New fruit..."
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)"> -->
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </div>

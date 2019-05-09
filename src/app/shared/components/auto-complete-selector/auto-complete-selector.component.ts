@@ -51,7 +51,6 @@ export class AutoCompleteSelectorComponent implements OnInit {
   }
 
   addClicked(){
-    console.log("clicked");
     const dialogRef = this.dialog.open(ProjectAddDialog, {
       width: '250px',
       data: {type:this.placeHolderValue}
