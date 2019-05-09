@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatExpansionModule, MatFormFieldModule, MatInputModule, MatGridListModule,
          MatIconModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule,
          MatAutocompleteModule, MatSelectModule, MatDividerModule, MatCardModule,
-         MatChipsModule, MatDialogModule } from '@angular/material';
+         MatChipsModule, MatDialogModule, MatSidenavModule } from '@angular/material';
 
 //custom material modules 
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
@@ -12,10 +12,12 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
   imports: [MatExpansionModule, MatFormFieldModule, MatInputModule, MatGridListModule, 
             MatIconModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule,
             MatAutocompleteModule, NgxMaterialTimepickerModule, MatSelectModule,
-            MatDividerModule, MatCardModule, MatChipsModule, MatDialogModule],
+            MatDividerModule, MatCardModule, MatChipsModule, MatDialogModule,
+            MatSidenavModule ],
   exports: [MatExpansionModule, MatFormFieldModule, MatInputModule, MatGridListModule,
             MatIconModule, MatButtonModule, MatDatepickerModule, MatNativeDateModule,
             MatAutocompleteModule, NgxMaterialTimepickerModule, MatSelectModule,
-            MatDividerModule, MatCardModule, MatChipsModule, MatDialogModule],
+            MatDividerModule, MatCardModule, MatChipsModule, MatDialogModule,
+            MatSidenavModule],
 })
 export class MyOwnCustomMaterialModule { }
