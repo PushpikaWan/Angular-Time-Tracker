@@ -5,8 +5,8 @@
       <mat-option style="color:gray" (click)="defaultItemClicked()">
           no {{placeHolderValue}}
         </mat-option>
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+          {{option.name}}
         </mat-option>
         <button class="mat-option" mat-button style="color:blue" (click)="addClicked()">
             <mat-icon style="color:blue">add</mat-icon>

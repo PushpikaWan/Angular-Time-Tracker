@@ -19,13 +19,13 @@
                     <div class="col filter-list-item">
                       <form>
                         <app-auto-complete-selector 
-                        [placeHolderValue]="'project'" #projectField>
+                        [placeHolderValue]="'project'" ([autoCompleteItem])="'autoCompleteProjectItems'" #projectField>
                         </app-auto-complete-selector>
                       </form>
                     </div>
                     <!-- tag -->
                     <div class="col filter-list-item">
-                      <app-auto-complete-selector [placeHolderValue]="'tag'" #tagField>
+                      <app-auto-complete-selector [placeHolderValue]="'tag'" [autoCompleteItem]="'autoCompleteTagItems'" #tagField>
                       </app-auto-complete-selector>
                     </div>
                   </div>

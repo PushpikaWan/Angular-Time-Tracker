@@ -20,6 +20,7 @@ export class TaskPageComponent implements OnInit {
         this.createDateSpecificList(taskData);
       }
     );
+    this.taskService.pageTaskInit();
   }
 
   private createDateSpecificList(taskData: Task[]) {

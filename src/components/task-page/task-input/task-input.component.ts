@@ -1,11 +1,13 @@
 import { Component, OnInit, SimpleChanges, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { startTimeRange } from '@angular/core/src/profile/wtf_impl';
 import { NgForm, FormControl } from '@angular/forms';
-import { AutoCompleteSelectorComponent } from 'src/app/shared/components/auto-complete-selector/auto-complete-selector.component';
+import { AutoCompleteSelectorComponent, AutoCompleteItem } from 'src/app/shared/components/auto-complete-selector/auto-complete-selector.component';
 import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
 import { TaskService } from 'src/app/services/task.service';
-import { Task } from 'src/app/models/task.module';
+import { Task as Tag } from 'src/app/models/task.module';
 import { DateTimeService } from 'src/app/services/date-time.service';
+import { Project } from 'src/app/models/project.module';
+import { projection } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-task-input',
@@ -23,17 +25,32 @@ export class TaskInputComponent implements OnInit {
 
   isStarted: boolean = false;
   //this selected item is null until it call from exsisting record
-  selectedItem: Task;
-  constructor(private taskService: TaskService, private dateTimeService: DateTimeService) { }
+  selectedItem: Tag;
+  autoCompleteProjectItems : AutoCompleteItem[];
+  autoCompleteTagItems : AutoCompleteItem[];
+
+  constructor(private taskService: TaskService, private dateTimeService: DateTimeService) {
+    this.taskService.projectListChanged.subscribe(
+      (projectData: Project[]) => {
+        this.setProjectsList(projectData);
+        this.setTagsList(projectData);
+      }
+    );
+    this.taskService.taskListChanged.subscribe(
+      (taskData: Tag[]) => {
+    //    this.tagList = taskData;
+      }
+    );
+    this.taskService.pageProjectInit();
+   }
 
   ngOnInit() {
     this.dateTimeService.continueItemChanged.subscribe(
       (selectedTask) => this.setDataAndStrat(selectedTask)
     );
-
   }
   setDataAndStrat(selectedTask: {}) {
-    this.selectedItem = <Task>selectedTask;
+    this.selectedItem = <Tag>selectedTask;
     console.log("got...->", this.selectedItem.timer);
     this.descriptionControl.setValue(this.selectedItem.description);
     this.projectField.myControl.setValue(this.selectedItem.project);
@@ -83,6 +100,19 @@ export class TaskInputComponent implements OnInit {
       startTime: this.timerField.startTime,
       endTime: this.timerField.endTime,
     });
+  }
+
+  private setProjectsList(projectList: Project[]){
+    this.autoCompleteProjectItems = projectList.map((item) => {
+      return { id:item.id, name:item.name, type:"PROJECT",color:item.color};
+    });
+  }
+
+  private setTagsList(projectList: Project[]){
+   this.autoCompleteTagItems = projectList.map((item) => {
+      return { id:item.id, name:item.name, type:"TAG",color:item.color};
+    });
+    console.log("tags to auto complete",this.autoCompleteTagItems);
   }
 
 }

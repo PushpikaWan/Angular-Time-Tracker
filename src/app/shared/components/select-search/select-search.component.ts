@@ -25,7 +25,7 @@ export class SelectSearchComponent implements OnInit, OnDestroy, AfterViewInit {
   public selectFilterCtrl: FormControl = new FormControl();
 
 
-  @Input() placeHolderValue : String; 
+  @Input() placeHolderValue : string; 
   @Input() task : Task; 
 
   /** list of banks */

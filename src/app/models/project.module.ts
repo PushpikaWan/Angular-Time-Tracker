@@ -1,5 +1,7 @@
 
 export class Project {
-    name: String;
-    color?: String;
+    id?: string;
+    name: string;
+    color?: string;
+    state?: string; //change this to enum
 }
