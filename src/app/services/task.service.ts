@@ -6,6 +6,7 @@ import { Task } from "../models/task.module";
 import { Injectable } from "@angular/core";
 import { MyToastService } from "./toastr.service";
 import { Project } from "../models/project.module";
+import { Tag } from "../models/tag.module";
 
 @Injectable()
 export class TaskService {
@@ -14,6 +15,7 @@ export class TaskService {
 
   private taskList: Task[] = [];
   private projectList: Project[] = [];
+  private tagList: Tag[] = [];
   private db: any;
 
   constructor(private toastr: MyToastService) {
@@ -27,24 +29,34 @@ export class TaskService {
   pageProjectInit() {
     this.updateProjectItemFromIndexDB();
   }
+
+  pageTagInit() {
+    this.updateTagItemFromIndexDB();
+  }
   // taskList: Array<Task> = [];
   taskListChanged = new Subject;
   projectListChanged = new Subject;
+  tagListChanged = new Subject;
 
   addTask(task: Task) {
     const isUpdate: boolean = (task.id !== undefined);
     task.id = (isUpdate ? task.id : UUID.UUID());
-    console.log("key", task.id);
     this.addTaskToIndexedDb(task, isUpdate);
     this.updateTaskItemFromIndexDB();
   }
 
   addProject(project: Project) {
     project.id = UUID.UUID();
-    console.log("key", project.id);
     this.addProjectToIndexedDb(project);
     this.updateProjectItemFromIndexDB();
   }
+
+  addTag(tag: Tag) {
+    tag.id = UUID.UUID();
+    this.addTagToIndexedDb(tag);
+    this.updateTagItemFromIndexDB();
+  }
+
 
 
   getTasks(): Task[] {
@@ -55,11 +67,15 @@ export class TaskService {
     return this.projectList;
   }
 
-  deleteTask(taskId: String) {
+  getTags(): Tag[] {
+    return this.tagList;
+  }
+
+  deleteTask(taskId: string) {
     this.deleteTaskItemsFromIndexedDb(taskId);
   }
 
-  deleteProject(projectId: String) {
+  deleteProject(projectId: string) {
     this.deleteProjectItemsFromIndexedDb(projectId);
   }
 
@@ -89,8 +105,19 @@ export class TaskService {
       .put(project)
       .then(async () => {
         const allItems: Project[] = await this.db.projects.toArray();
-        console.log('saved in DB, DB is now', allItems);
         this.toastr.showSuccess("Project added");
+      })
+      .catch(e => {
+        alert('Error: ' + (e.stack || e));
+      });
+  }
+
+  private addTagToIndexedDb(tag: Tag) {
+    this.db.tags
+      .put(tag)
+      .then(async () => {
+        const allItems: Tag[] = await this.db.tags.toArray();
+        this.toastr.showSuccess("Tag added");
       })
       .catch(e => {
         alert('Error: ' + (e.stack || e));
@@ -109,7 +136,13 @@ export class TaskService {
     this.projectListChanged.next(this.getProjects());
   }
 
-  private async deleteTaskItemsFromIndexedDb(id: String) {
+  private async updateTagItemFromIndexDB() {
+    const allItems: Tag[] = await this.db.tags.toArray();
+    this.tagList = allItems;
+    this.tagListChanged.next(this.getTags());
+  }
+
+  private async deleteTaskItemsFromIndexedDb(id: string) {
 
     const allItems: Task[] = await this.db.tasks.toArray();
     // console.log("Delete this id",id);
@@ -124,7 +157,7 @@ export class TaskService {
     this.updateTaskItemFromIndexDB();
   }
 
-  private async deleteProjectItemsFromIndexedDb(id: String) {
+  private async deleteProjectItemsFromIndexedDb(id: string) {
 
     const allItems: Project[] = await this.db.projects.toArray();
     // console.log("Delete this id",id);
@@ -132,11 +165,26 @@ export class TaskService {
       if (item.id == id) {
         this.db.projects.delete(item.id).then(() => {
           // console.log(`item ${item.id} sent and deleted locally`);
-          this.toastr.showDanger("Record deleted");
+          this.toastr.showDanger("Project deleted");
         });
       }
     });
     this.updateProjectItemFromIndexDB();
+  }
+
+  private async deleteTagItemsFromIndexedDb(id: string) {
+
+    const allItems: Tag[] = await this.db.tags.toArray();
+    // console.log("Delete this id",id);
+    allItems.forEach((item: Tag) => {
+      if (item.id == id) {
+        this.db.tags.delete(item.id).then(() => {
+          // console.log(`item ${item.id} sent and deleted locally`);
+          this.toastr.showDanger("Tag deleted");
+        });
+      }
+    });
+    this.updateTagItemFromIndexDB();
   }
 
   //this is used to get project object by assuming name is unique

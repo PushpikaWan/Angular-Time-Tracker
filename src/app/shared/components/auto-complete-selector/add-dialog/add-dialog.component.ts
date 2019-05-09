@@ -29,7 +29,12 @@ export interface DialogData {
     onCreateItem():void{
         console.log("name input",this.nameInput.nativeElement.value);
         console.log("color input",this.colorInput.nativeElement.colorPicker);
-        this.taskService.addProject({name:this.nameInput.nativeElement.value, color:"test"});
+        if(this.data.type.toUpperCase() === "PROJECT"){
+          this.taskService.addProject({name:this.nameInput.nativeElement.value, color:"test"});
+        }
+        else if(this.data.type.toUpperCase() === "TAG"){
+          this.taskService.addTag({name:this.nameInput.nativeElement.value, color:"test"});
+        }
     }
 
     public onEventLog(event: string, data: any): void {

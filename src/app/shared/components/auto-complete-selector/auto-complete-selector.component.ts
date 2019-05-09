@@ -43,12 +43,10 @@ export class AutoCompleteSelectorComponent implements OnInit {
   }
   
   private _filter(value: string): AutoCompleteItem[] {
-    console.log("search string", value);
     if(this.options == undefined || this.options.length == 0){
       return;
     }
     const filterValue = value.toLowerCase();
-    console.log("filter value",filterValue);
     return this.options.filter(option => option.name.toLowerCase().includes(filterValue));
   }
 

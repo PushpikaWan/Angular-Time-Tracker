@@ -14,7 +14,7 @@ export class TimerComponent implements OnInit {
 
   private sub: Subscription;
   timerValue: Timer =  {hours:0, minutes:0, seconds:0};
-  timerString: String;
+  timerString: string;
   startTime: Time;
   endTime: Time;
   timer: any;

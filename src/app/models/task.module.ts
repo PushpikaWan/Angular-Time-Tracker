@@ -4,12 +4,12 @@ import { Tag } from "./tag.module";
 import { Time } from "./time.module";
 
 export class Task{
-    id?: String;
-    description: String;
+    id?: string;
+    description: string;
     project: Project
     tag: Tag
     timer: Timer;
-    state?: String; 
+    state?: string; 
     date? : Date;
     startTime? : Time;
     endTime? : Time;

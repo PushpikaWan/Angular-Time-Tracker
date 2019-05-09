@@ -14,15 +14,15 @@ export class DateTimeService {
   dateStateChanged = new Subject;
   TimeStateChanged = new Subject;
 
-  convertTimerToString(timer: Timer): String {
+  convertTimerToString(timer: Timer): string {
     return ` ${timer.hours} h : ${timer.minutes} m : ${timer.seconds} s`;
   }
 
-  convertTimeToString(time: Time): String {
+  convertTimeToString(time: Time): string {
     return `${time.hours}:${time.minutes}:${time.seconds}`;
   }
 
-  convertStringToTime(timeString: String): Time {
+  convertStringToTime(timeString: string): Time {
     const [time, modifier] = timeString.split(' ');
     let [hours, minutes] = time.split(':').map(Number);
 

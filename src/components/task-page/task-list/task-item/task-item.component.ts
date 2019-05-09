@@ -28,7 +28,7 @@ export class TaskItemComponent implements OnInit {
 
   ItemForm: FormGroup;
 
-  descriptionField: String;
+  descriptionField: string;
 
   autoCompleteProjectItems : AutoCompleteItem[];
   autoCompleteTagItems : AutoCompleteItem[];
@@ -39,15 +39,15 @@ export class TaskItemComponent implements OnInit {
       this.taskService.projectListChanged.subscribe(
         (projectData: Project[]) => {
           this.setProjectsList(projectData);
-          this.setTagsList(projectData);
         }
       );
-      this.taskService.taskListChanged.subscribe(
-        (taskData: Tag[]) => {
-      //    this.tagList = taskData;
+      this.taskService.tagListChanged.subscribe(
+        (tagData: Tag[]) => {
+         this.setTagsList(tagData);
         }
       );
       this.taskService.pageProjectInit();
+      this.taskService.pageTagInit();
   }
 
   ngOnInit() {
@@ -171,8 +171,8 @@ export class TaskItemComponent implements OnInit {
     });
   }
 
-  private setTagsList(projectList: Project[]){
-   this.autoCompleteTagItems = projectList.map((item) => {
+  private setTagsList(tagList: Tag[]){
+   this.autoCompleteTagItems = tagList.map((item) => {
       return { id:item.id, name:item.name, type:"TAG",color:item.color};
     });
   }
