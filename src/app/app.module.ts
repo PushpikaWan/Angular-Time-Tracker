@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyOwnCustomMaterialModule } from './shared/material.module';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { MyToastService } from './services/toastr.service';
 import { ProjectPageComponent } from 'src/components/project-page/project-page.component';
 import { TagPageComponent } from 'src/components/tag-page/tag-page.component';
 import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-page.component';
+import { ProjectAddDialog } from './shared/components/auto-complete-selector/add-dialog/add-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-p
     NavBarComponent,
     ProjectPageComponent,
     TagPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    ProjectAddDialog
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-p
     FormsModule,
     ReactiveFormsModule,
     NgxMatSelectSearchModule,
+    ColorPickerModule,
     ToastrModule.forRoot()
   ],
   providers: [
@@ -64,6 +69,7 @@ import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-p
     DateTimeService,
     MyToastService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ProjectAddDialog]
 })
 export class AppModule { }

@@ -93,7 +93,7 @@ export class TaskInputComponent implements OnInit {
   private saveData() {
     this.taskService.addTask({
       description: this.taskField.nativeElement.value,
-      project: this.projectField.myControl.value,
+      project:this.projectField.myControl.value,
       tag: this.tagField.myControl.value,
       date: (this.selectedItem !== undefined ? this.selectedItem.date : new Date()),
       timer: this.timerField.timerValue,
@@ -112,7 +112,6 @@ export class TaskInputComponent implements OnInit {
    this.autoCompleteTagItems = projectList.map((item) => {
       return { id:item.id, name:item.name, type:"TAG",color:item.color};
     });
-    console.log("tags to auto complete",this.autoCompleteTagItems);
   }
 
 }

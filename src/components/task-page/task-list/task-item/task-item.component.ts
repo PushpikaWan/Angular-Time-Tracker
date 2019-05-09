@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, OnDestroy } from '@angular/core';
 import { Task } from 'src/app/models/task.module';
-import { AutoCompleteSelectorComponent } from 'src/app/shared/components/auto-complete-selector/auto-complete-selector.component';
+import { AutoCompleteSelectorComponent, AutoCompleteItem } from 'src/app/shared/components/auto-complete-selector/auto-complete-selector.component';
 import { NgForm, FormGroup, FormBuilder } from '@angular/forms';
 import { TimePickerComponent } from 'src/app/shared/components/time-picker/time-picker.component';
 import { DateTimeService } from 'src/app/services/date-time.service';
@@ -8,6 +8,8 @@ import { TaskService } from 'src/app/services/task.service';
 import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
 import { DatePickerComponent } from 'src/app/shared/components/date-picker/date-picker.component';
 import { SelectSearchComponent } from 'src/app/shared/components/select-search/select-search.component';
+import { Project } from 'src/app/models/project.module';
+import { Tag } from 'src/app/models/tag.module';
 
 @Component({
   selector: 'app-task-item',
@@ -28,9 +30,24 @@ export class TaskItemComponent implements OnInit {
 
   descriptionField: String;
 
+  autoCompleteProjectItems : AutoCompleteItem[];
+  autoCompleteTagItems : AutoCompleteItem[];
+
   constructor(private formBuilder: FormBuilder,
     private taskService: TaskService,
     private dateTimeService: DateTimeService) {
+      this.taskService.projectListChanged.subscribe(
+        (projectData: Project[]) => {
+          this.setProjectsList(projectData);
+          this.setTagsList(projectData);
+        }
+      );
+      this.taskService.taskListChanged.subscribe(
+        (taskData: Tag[]) => {
+      //    this.tagList = taskData;
+        }
+      );
+      this.taskService.pageProjectInit();
   }
 
   ngOnInit() {
@@ -146,6 +163,18 @@ export class TaskItemComponent implements OnInit {
 
   private onPlayItem(){
     this.dateTimeService.continueItemChanged.next(this.currentTask);
+  }
+
+  private setProjectsList(projectList: Project[]){
+    this.autoCompleteProjectItems = projectList.map((item) => {
+      return { id:item.id, name:item.name, type:"PROJECT",color:item.color};
+    });
+  }
+
+  private setTagsList(projectList: Project[]){
+   this.autoCompleteTagItems = projectList.map((item) => {
+      return { id:item.id, name:item.name, type:"TAG",color:item.color};
+    });
   }
 
 }

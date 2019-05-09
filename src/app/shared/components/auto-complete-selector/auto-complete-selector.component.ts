@@ -4,6 +4,9 @@ import { FormControl, ControlValueAccessor, FormBuilder, FormGroup } from '@angu
 import {map, startWith} from 'rxjs/operators';
 import { Task } from 'src/app/models/task.module';
 import { TaskService } from 'src/app/services/task.service';
+import { MatDialog } from '@angular/material';
+import { ProjectAddDialog } from './add-dialog/add-dialog.component';
+import { Placeholder } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-auto-complete-selector',
@@ -23,7 +26,7 @@ export class AutoCompleteSelectorComponent implements OnInit {
   options: AutoCompleteItem[] = [];
   filteredOptions: Observable<AutoCompleteItem[]>;
 
-  constructor(){
+  constructor(public dialog: MatDialog){
   }
 
   ngOnInit() {
@@ -51,6 +54,15 @@ export class AutoCompleteSelectorComponent implements OnInit {
 
   addClicked(){
     console.log("clicked");
+    const dialogRef = this.dialog.open(ProjectAddDialog, {
+      width: '250px',
+      data: {type:this.placeHolderValue}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = "sad";
+    });
   }
   defaultItemClicked(){
     console.log("default item clicked");
