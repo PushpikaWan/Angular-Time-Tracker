@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, OnDestroy } from '@angular/core';
-import { Task } from 'src/app/models/task.module';
+import { Task } from 'src/app/models/task.modle';
 import { AutoCompleteSelectorComponent, AutoCompleteItem } from 'src/app/shared/components/auto-complete-selector/auto-complete-selector.component';
 import { NgForm, FormGroup, FormBuilder } from '@angular/forms';
 import { TimePickerComponent } from 'src/app/shared/components/time-picker/time-picker.component';
@@ -8,8 +8,8 @@ import { TaskService } from 'src/app/services/task.service';
 import { TimerComponent } from 'src/app/shared/components/timer/timer.component';
 import { DatePickerComponent } from 'src/app/shared/components/date-picker/date-picker.component';
 import { SelectSearchComponent } from 'src/app/shared/components/select-search/select-search.component';
-import { Project } from 'src/app/models/project.module';
-import { Tag } from 'src/app/models/tag.module';
+import { Project } from 'src/app/models/project.model';
+import { Tag } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-task-item',

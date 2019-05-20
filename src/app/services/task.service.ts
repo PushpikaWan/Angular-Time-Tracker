@@ -2,11 +2,11 @@ import { Subject } from "rxjs";
 import { UUID } from 'angular2-uuid';
 import Dexie from 'dexie';
 
-import { Task } from "../models/task.module";
+import { Task } from "../models/task.modle";
 import { Injectable } from "@angular/core";
 import { MyToastService } from "./toastr.service";
-import { Project } from "../models/project.module";
-import { Tag } from "../models/tag.module";
+import { Project } from "../models/project.model";
+import { Tag } from "../models/tag.model";
 
 @Injectable()
 export class TaskService {

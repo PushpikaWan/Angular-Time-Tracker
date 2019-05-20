@@ -2,7 +2,7 @@ import { Component, OnInit, Input, ViewEncapsulation, SimpleChange, SimpleChange
 import { Observable } from 'rxjs';
 import { FormControl, ControlValueAccessor, FormBuilder, FormGroup } from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
-import { Task } from 'src/app/models/task.module';
+import { Task } from 'src/app/models/task.modle';
 import { TaskService } from 'src/app/services/task.service';
 import { MatDialog } from '@angular/material';
 import { ProjectAddDialog } from './add-dialog/add-dialog.component';

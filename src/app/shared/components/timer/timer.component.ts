@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 
-import { Task } from 'src/app/models/task.module';
+import { Task } from 'src/app/models/task.modle';
 import { DateTimeService } from 'src/app/services/date-time.service';
-import { Timer } from 'src/app/models/timer.module';
-import { Time } from 'src/app/models/time.module';
+import { Timer } from 'src/app/models/timer.modle';
+import { Time } from 'src/app/models/time.modle';
 
 @Component({
   selector: 'app-timer',

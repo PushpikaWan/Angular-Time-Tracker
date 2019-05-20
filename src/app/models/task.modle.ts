@@ -1,7 +1,7 @@
-import { Timer } from "./timer.module";
-import { Project } from "./project.module";
-import { Tag } from "./tag.module";
-import { Time } from "./time.module";
+import { Timer } from "./timer.modle";
+import { Project } from "./project.model";
+import { Tag } from "./tag.model";
+import { Time } from "./time.modle";
 
 export class Task{
     id?: string;

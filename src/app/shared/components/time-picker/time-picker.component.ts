@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from 'src/app/models/task.module';
+import { Task } from 'src/app/models/task.modle';
 import { FormControl } from '@angular/forms';
 
 @Component({

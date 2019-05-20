@@ -3,7 +3,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatDialog} from '@angular/material';
 import { TaskService } from 'src/app/services/task.service';
 import { ProjectAddDialog } from 'src/app/shared/components/auto-complete-selector/add-dialog/add-dialog.component';
-import { Tag } from 'src/app/models/tag.module';
+import { Tag } from 'src/app/models/tag.model';
 
 @Component({
   selector: 'app-tag-page',

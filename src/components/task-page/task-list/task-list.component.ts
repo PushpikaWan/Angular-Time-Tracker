@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from 'src/app/models/task.module';
-import { Time } from 'src/app/models/time.module';
+import { Task } from 'src/app/models/task.modle';
+import { Time } from 'src/app/models/time.modle';
 import { TaskService } from 'src/app/services/task.service';
 import { DateSpecificTask, PresentableDate } from '../task-page.component';
 

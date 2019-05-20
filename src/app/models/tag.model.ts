@@ -1,4 +1,4 @@
-import { Project } from "./project.module";
+import { Project } from "./project.model";
 
 export class Tag {
     id?: string;

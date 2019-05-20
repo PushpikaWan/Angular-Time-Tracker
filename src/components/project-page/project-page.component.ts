@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent, MatDialog} from '@angular/material';
-import { Project } from 'src/app/models/project.module';
+import { Project } from 'src/app/models/project.model';
 import { TaskService } from 'src/app/services/task.service';
 import { ProjectAddDialog } from 'src/app/shared/components/auto-complete-selector/add-dialog/add-dialog.component';
 

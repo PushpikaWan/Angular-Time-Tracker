@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
-import { Timer } from "../models/timer.module";
-import { Time } from "../models/time.module";
+import { Timer } from "../models/timer.modle";
+import { Time } from "../models/time.modle";
 
 export class DateTimeService {
 

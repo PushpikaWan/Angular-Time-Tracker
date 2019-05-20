@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Subject, ReplaySubject } from 'rxjs';
 import { MatSelect } from '@angular/material';
 import { takeUntil, take } from 'rxjs/operators';
-import { Task } from 'src/app/models/task.module';
+import { Task } from 'src/app/models/task.modle';
 
 interface Bank {
   id: string;
