@@ -24,6 +24,11 @@ export class AppTaskPage {
   getTaskInputProjectSelector() {
     return this.getTaskInputForm().element(by.id('projectField'));
   }
+
+  getTaskInputTagSelector() {
+    return this.getTaskInputForm().element(by.id('tagField'));
+  }
+
   getTaskInputStartButton() {
     return this.getTaskInputForm().element(by.css('button'));
   }
@@ -32,8 +37,12 @@ export class AppTaskPage {
     return this.getSavedTaskItemList().get(0).element(by.css('input'));
   }
 
-  getDeleteItemFromTask(){
+  getDeleteItemButtonFromTask(){
     return this.getSavedTaskItemList().get(0).element(by.cssContainingText('mat-icon','delete'));
+  }
+
+  getStartItemButtonFromTask(){
+    return this.getSavedTaskItemList().get(0).element(by.cssContainingText('mat-icon','play_arrow'));
   }
 
   browserSleep(milli: number){
