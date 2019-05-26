@@ -64,7 +64,7 @@ export class TaskItemComponent implements OnInit {
       projectField: this.projectField.myControl.setValue(this.currentTask.project),
       tagField: this.tagField.myControl.setValue(this.currentTask.tag),
       startTimeField: this.startTimeField.timePickerControl.setValue(
-        this.dateTimeService.convertTimeToString(this.currentTask.startTime)
+        this.dateTimeService.convertTimeToString(this.currentTask.startTime),
       ),
       endTimeField: this.endTimeField.timePickerControl.setValue(
         this.dateTimeService.convertTimeToString(this.currentTask.endTime)
