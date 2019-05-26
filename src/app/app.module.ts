@@ -18,18 +18,18 @@ import { TimerComponent } from './shared/components/timer/timer.component';
 import { AutoCompleteSelectorComponent } from './shared/components/auto-complete-selector/auto-complete-selector.component';
 import { DateTimeService } from './services/date-time.service';
 import { SelectSearchComponent } from './shared/components/select-search/select-search.component';
-import { TaskListComponent } from 'src/components/task-page/task-list/task-list.component';
-import { TaskInputComponent } from 'src/components/task-page/task-input/task-input.component';
-import { TaskItemComponent } from 'src/components/task-page/task-list/task-item/task-item.component';
-import { TaskPageComponent } from 'src/components/task-page/task-page.component';
-import { SideBarComponent } from 'src/components/side-bar/side-bar.component';
-import { NavBarComponent } from 'src/components/nav-bar/nav-bar.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { MyToastService } from './services/toastr.service';
-import { ProjectPageComponent } from 'src/components/project-page/project-page.component';
-import { TagPageComponent } from 'src/components/tag-page/tag-page.component';
-import { NotFoundPageComponent } from 'src/components/not-found-page/not-found-page.component';
+import { TaskInputComponent } from './components/task-page/task-input/task-input.component';
+import { TaskListComponent } from './components/task-page/task-list/task-list.component';
+import { TaskItemComponent } from './components/task-page/task-list/task-item/task-item.component';
+import { TaskPageComponent } from './components/task-page/task-page.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ProjectPageComponent } from './components/project-page/project-page.component';
+import { TagPageComponent } from './components/tag-page/tag-page.component';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { ProjectAddDialog } from './shared/components/auto-complete-selector/add-dialog/add-dialog.component';
 
 
